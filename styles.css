@@ -1,0 +1,33 @@
+html, body {
+    height: 100%;
+    background-color: black;
+    font-family: 'Satoshi', sans-serif;
+}
+
+header {
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+header h1, header h3{
+    color: white;
+    font-weight: 400;
+}
+
+header h1 {
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+header h3 {
+    width: 100%;
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
