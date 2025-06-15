@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 html, body {
     height: 100%;
     background-color: black;
@@ -31,7 +31,8 @@ header h3 {
     top: 95%;
     left: 50%;
     transform: translate(-50%, -50%);
-=======
+}
+
 /* Needed to add fade in effect to scroll text */
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -89,6 +90,7 @@ header h3 {
 }
 
 /* Makes the scroll hint text fade in after a 3.5 second delay */
+
 #scroll-btn {
     opacity:0;
     -webkit-animation:fadeIn ease-in 1;
@@ -106,5 +108,4 @@ header h3 {
     -webkit-animation-delay: 3.5s;
     -moz-animation-delay: 3.5s;
     animation-delay: 3.5s;
->>>>>>> Stashed changes
 }
