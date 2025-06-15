@@ -1,0 +1,1 @@
+document.title = "Alex Holt."; // Changes the title, just because I don't want a long title in the tab bar, but need a longer one for SEO.
