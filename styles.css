@@ -67,6 +67,7 @@ body {
 
 .terminal-line .prompt {
     color: #0f0;
+    animation: blink 1s step-end infinite;
 }
 
 .terminal-line .value {
