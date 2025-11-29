@@ -1,21 +1,43 @@
+/* Needed to add fade in effect to scroll text */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
 html, body {
     height: 100%;
     background-color: black;
     font-family: 'Satoshi', sans-serif;
 }
 
-header {
+h1, h3{
+    color: #F8F8FF;
+    font-weight: 400;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+a {
+    text-decoration: none;
+    color: #F8F8FF;
+}
+
+.button{
+    color: black;
+    background-color: #F8F8FF;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+header, section {
     height: 100%;
     text-align: center;
     position: relative;
 }
 
-header h1, header h3{
-    color: white;
-    font-weight: 400;
-}
 
-header h1 {
+h1 {
     width: 100%;
     margin: 0;
     position: absolute;
@@ -30,4 +52,25 @@ header h3 {
     top: 95%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+/* Makes the scroll hint text fade in after a 3.5 second delay */
+
+#scroll-btn {
+    opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+
+    -webkit-animation-fill-mode:forwards; 
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+
+    -webkit-animation-duration:0.75s;
+    -moz-animation-duration:0.75s;
+    animation-duration:0.75s;
+
+    -webkit-animation-delay: 3.5s;
+    -moz-animation-delay: 3.5s;
+    animation-delay: 3.5s;
 }
