@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
     <title>Alex (@lag)</title>
     <style>
         * {
@@ -372,8 +371,8 @@
             </div>
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-label">Hours Logged</div>
-                    <div class="stat-value">3,247</div>
+                    <div class="stat-label">Years Gaming</div>
+                    <div class="stat-value" id="years-gaming">5</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-label">Money Spent</div>
@@ -390,8 +389,8 @@
     <!-- Quote -->
     <section class="quote-section">
         <div class="container">
-            <blockquote class="quote">
-                In the end, I realized that the real treasure wasn't the cake - it was the testing we did along the way.
+            <blockquote class="quote" id="random-quote">
+                In the end, I realized that the real treasure wasn't the cake—it was the testing we did along the way.
             </blockquote>
         </div>
     </section>
@@ -413,6 +412,25 @@
     </footer>
 
     <script>
+        // Calculate years gaming since Steam account creation
+        const steamAccountDate = new Date('2020-04-26');
+        const today = new Date();
+        const yearsDiff = (today - steamAccountDate) / (1000 * 60 * 60 * 24 * 365.25);
+        const yearsGaming = Math.floor(yearsDiff);
+        document.getElementById('years-gaming').textContent = yearsGaming;
+
+        // Random quote rotation
+        const quotes = [
+            "In the end, I realized that the real treasure wasn't the cake - it was the testing we did along the way.",
+            "In Night City, you can be anyone you want - as long as you're willing to pay the price.",
+            "Sometimes the machines meant to serve us reveal more about humanity than we'd like to admit.",
+            "The path forward isn't always clear, but standing still never got anyone to the end credits.",
+            "It's so much easier to see the world in black and white. Gray? I don't know what to do with gray..."
+        ];
+        
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        document.getElementById('random-quote').textContent = randomQuote;
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
