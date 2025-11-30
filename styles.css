@@ -286,6 +286,16 @@ body {
     font-family: monospace;
 }
 
+.footer a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
 /* Scroll Hint */
 .scroll-hint {
     position: absolute;
