@@ -337,8 +337,13 @@ body {
     }
 
     .section-header {
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .section-header.with-nav {
+        flex-wrap: nowrap;
     }
 
     .game-item {
