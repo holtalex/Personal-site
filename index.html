@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Just someone who likes to play games. Currently playing: Red Dead Redemption, Cuphead & Blue Prince.">
+    <meta name="description" content="Just someone who likes to play games. Currently playing: Cuphead, Blue Prince & Shinobi: Art of Vengeance">
     <link rel="icon" type="image/x-icon" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
     <title>Alex (@lag)</title>
@@ -18,8 +18,8 @@
             </p>
             <div class="terminal">
                 <div class="terminal-line" data-scroll-to="currently-playing"><span class="prompt">></span> currently_playing</div>
-                <div class="terminal-line" data-scroll-to="stats"><span class="prompt">></span> stats</div>
                 <div class="terminal-line" data-scroll-to="resolutions"><span class="prompt">></span> resolutions</div>
+                <div class="terminal-line" data-scroll-to="stats"><span class="prompt">></span> stats</div>
             </div>
         </div>
         <div class="scroll-hint">[SCROLL]</div>
@@ -33,25 +33,6 @@
                 <h2 class="section-title">Currently Playing</h2>
             </div>
             <div class="game-list">
-                
-                <div class="game-item">
-                    <div class="game-ascii">🐎</div>
-                    <div class="game-content">
-                        <h3>Red Dead Redemption</h3>
-                        <p>A game I've never played, despite releasing well over a decade ago, it's finally time to get around to it - and it was worth the wait.</p>
-                        <div class="game-meta">
-                            <div class="meta-item">
-                                <span class="meta-label">STATUS:</span>
-                                <span class="meta-value">Hooked</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">HONOR:</span>
-                                <span class="meta-value">Honest Joe</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="game-item">
                     <div class="game-ascii">☕</div>
                     <div class="game-content">
@@ -87,7 +68,73 @@
                         </div>
                     </div>
                 </div>
-                
+
+                <div class="game-item">
+                    <div class="game-ascii">🥷</div>
+                    <div class="game-content">
+                        <h3>Shinobi: Art of Vengeance</h3>
+                        <p>A fast-paced game where strategy means to forget about your health and just hope for the best.</p>
+                        <div class="game-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">STATUS:</span>
+                                <span class="meta-value">Training</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">STEALTH:</span>
+                                <span class="meta-value">Questionable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Year's Resolutions -->
+    <section class="section" id="resolutions">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">[02]</span>
+                <h2 class="section-title">
+                    <span id="current-year">2025</span> Resolutions  <!-- Update the year here too for the default year -->
+                </h2>
+                <div class="year-nav-container">
+                    <span class="year-nav" id="prev-year">‹</span>
+                    <span class="year-nav" id="next-year">›</span>
+                </div>
+            </div>
+            <div class="resolutions-list" id="resolutions-2025">
+                <!-- To mark as complete: add class="completed" to the resolution-item -->
+                <!-- To mark as failed: add class="failed" to the resolution-item -->
+                <!-- To reset: remove the class -->
+
+                <!-- To ad new years, duplicate the div, then update the scripts.js file (see top of that file) -->
+                <div class="resolution-item">
+                    <div class="resolution-checkbox"></div>
+                    <div class="resolution-text">Drink at least 1.5L of water per day</div>
+                </div>
+                <div class="resolution-item">
+                    <div class="resolution-checkbox"></div>
+                    <div class="resolution-text">Get screen time down to below 3 hours a day</div>
+                </div>
+                <div class="resolution-item">
+                    <div class="resolution-checkbox"></div>
+                    <div class="resolution-text">Complete every Apple Watch monthly challenge</div>
+                </div>
+            </div>
+            <div class="resolutions-list" id="resolutions-2026" style="display: none;">
+                <div class="resolution-item">
+                    <div class="resolution-checkbox"></div>
+                    <div class="resolution-text">Placeholder</div>
+                </div>
+                <div class="resolution-item">
+                    <div class="resolution-checkbox"></div>
+                    <div class="resolution-text">Placeholder</div>
+                </div>
+                <div class="resolution-item">
+                    <div class="resolution-checkbox"></div>
+                    <div class="resolution-text">Placeholder</div>
+                </div>
             </div>
         </div>
     </section>
@@ -96,7 +143,7 @@
     <section class="section" id="stats">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">[02]</span>
+                <span class="section-number">[03]</span>
                 <h2 class="section-title">Stats</h2>
             </div>
             <div class="stats-grid">
@@ -109,35 +156,8 @@
                     <div class="stat-value">£???</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-label">Backlog</div>
-                    <div class="stat-value">∞</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- New Year's Resolutions -->
-    <section class="section" id="resolutions">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-number">[03]</span>
-                <h2 class="section-title">2025 Resolutions</h2>
-            </div>
-            <div class="resolutions-list">
-                <!-- To mark as complete: add class="completed" to the resolution-item -->
-                <!-- To mark as failed: add class="failed" to the resolution-item -->
-                <!-- To reset: remove the class -->
-                <div class="resolution-item">
-                    <div class="resolution-checkbox"></div>
-                    <div class="resolution-text">Drink at least 1.5L of water per day</div>
-                </div>
-                <div class="resolution-item">
-                    <div class="resolution-checkbox"></div>
-                    <div class="resolution-text">Get screen time down to below 3 hours a day</div>
-                </div>
-                <div class="resolution-item">
-                    <div class="resolution-checkbox"></div>
-                    <div class="resolution-text">Complete every Apple Watch monthly challenge</div>
+                    <div class="stat-label">Resolutions Done</div>
+                    <div class="stat-value">0</div>
                 </div>
             </div>
         </div>
@@ -165,7 +185,7 @@
             </div>
             
             <p><a href="https://github.com/holtalex/Personal-site" target="_blank">Source Code</a></p>
-            <p>No personal data is collected by this site.</p>
+            <p>No data is collected on this site.</p>
             <p style="margin-top: 0.5rem;">Built with &lt;/&gt; and ♥</p>
         </div>
     </footer>
