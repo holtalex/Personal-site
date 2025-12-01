@@ -87,10 +87,6 @@ body {
     margin-bottom: 3rem;
 }
 
-.section-header.with-nav {
-    justify-content: space-between;
-}
-
 .section-number {
     font-size: 0.85rem;
     color: #555;
@@ -101,36 +97,17 @@ body {
     font-weight: 400;
 }
 
-.year-nav-container {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-left: auto;
-}
-
-.year-nav {
-    font-size: 1.5rem;
-    color: #555;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    user-select: none;
-}
-
-.year-nav:hover {
-    color: #fff;
-}
-
-.year-nav.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
 /* Game List */
 .game-list {
     display: flex;
     flex-direction: column;
     gap: 3rem;
+}
+
+.game-list a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .game-item {
@@ -347,13 +324,8 @@ body {
     }
 
     .section-header {
-        flex-direction: row;
+        flex-direction: column;
         gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-
-    .section-header.with-nav {
-        flex-wrap: nowrap;
     }
 
     .game-item {
