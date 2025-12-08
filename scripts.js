@@ -1,3 +1,37 @@
+// Change favicon based on system theme
+// May not work in Safari due to aggressive caching
+document.head = document.head || document.getElementsByTagName('head')[0];
+
+function themedFavicon(src) {
+ var link = document.createElement('link'),
+     oldLink = document.getElementById('dynamic-favicon');
+ link.id = 'dynamic-favicon';
+ link.rel = 'shortcut icon';
+ link.href = src;
+ if (oldLink) {
+  document.head.removeChild(oldLink);
+ }
+ document.head.appendChild(link);
+}
+
+// Set themed favicon on page load
+const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+if (isDarkMode) {
+    themedFavicon('favicon-dark.png');
+} else {
+    themedFavicon('favicon-light.png');
+}
+
+// Set themed favicon on theme change
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (e.matches) {
+        themedFavicon('favicon-dark.png');
+    } else {
+        themedFavicon('favicon-light.png');
+    }
+});
+
+
 // Terminal navigation
 document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
     line.addEventListener('click', function() {
@@ -9,12 +43,14 @@ document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
     });
 });
 
+
 // Calculate years gaming since Steam account creation
 const steamAccountDate = new Date('2020-04-26');
 const today = new Date();
 const yearsDiff = (today - steamAccountDate) / (1000 * 60 * 60 * 24 * 365.25);
 const yearsGaming = Math.floor(yearsDiff);
 document.getElementById('years-gaming').textContent = yearsGaming;
+
 
 // Random quote rotation
 const quotes = [
@@ -28,6 +64,7 @@ const quotes = [
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 document.getElementById('random-quote').textContent = randomQuote;
 
+
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -37,6 +74,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
+
 
 // Remove scroll hint after first scroll
 let scrollHint = document.querySelector('.scroll-hint');
