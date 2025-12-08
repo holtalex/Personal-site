@@ -1,9 +1,10 @@
 # Personal-site
 
 Hello!
-This is my personal website.
+My name is Alex, and here is a little website that I put together.
 
-~~It is currently a work in progress, but I hope to make it better soon.
-All the fun changes are over on the 'testing' branch, but if you want to see the code I'm currently using, then stick on the 'main' branch.~~
+It is a constant work in progress, but I hope you like it!
 
-Now fully made - absolutely coded by hand. Not at all vibe coded. Just... don't look too hard
+I also don't really mind if you don't, because it's my website. And I bet you don't have a website. Not that there's much need to, it's just fun.
+
+Feel free to take a look at my code, see how stuff works (or doesn't), and if you really, *really* want to, you can even take some snippets to use in your own projects. I wouldn't recommend it, as there's probably much better code you can find out there in the world wide web, but you can.
