@@ -15,19 +15,19 @@ function themedFavicon(src) {
 }
 
 // Set themed favicon on page load
-const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-if (isDarkMode) {
-    themedFavicon('favicon-dark.png');
-} else {
+const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+if (isLightMode) {
     themedFavicon('favicon-light.png');
+} else {
+    themedFavicon('favicon-dark.png');
 }
 
 // Set themed favicon on theme change
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
     if (e.matches) {
-        themedFavicon('favicon-dark.png');
-    } else {
         themedFavicon('favicon-light.png');
+    } else {
+        themedFavicon('favicon-dark.png');
     }
 });
 

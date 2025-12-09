@@ -12,24 +12,24 @@ body {
     line-height: 1.6;
 }
 
-@media (prefers-color-scheme: dark) {
-    body {
-        background: #000;
-        color: #fff;
-    }
-
-    :root {
-        --primary: #fff;
-        --background : #000;
-        --grey-primary: #111;
-        --grey-secondary: #222;
-        --grey-tertiary: #333;
-        --grey-quaternary: #555;
-        --grey-quinary: #888;
-        --accent-green: #0f0;
-    }
+/* Default themes */
+body {
+    background: #000;
+    color: #fff;
 }
 
+:root {
+    --primary: #fff;
+    --background : #000;
+    --grey-primary: #111;
+    --grey-secondary: #222;
+    --grey-tertiary: #333;
+    --grey-quaternary: #555;
+    --grey-quinary: #888;
+    --accent-green: #0f0;
+}
+
+/* Themes are overwritten if the user is in dark mode */
 @media (prefers-color-scheme: light) {
     body {
         background: #fff;
