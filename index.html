@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Just someone who likes to play games. Currently playing: Cuphead, Blue Prince & Shinobi: Art of Vengeance">
-    <link rel="icon" type="image/x-icon" href="favicon.png">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Just someone who likes to play games. Currently playing: Red Dead Redemption, Cuphead & Blue Prince.">
+    <!-- Favicon now set dynamically by JavaScript -->
+    <link rel="stylesheet" href="styles.css?v=2">
     <title>Alex (@lag)</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
         <div class="container">
             <h1>ALEX<span class="cursor"></span></h1>
             <p class="hero-subtitle">
-                If ever you have a few spare minutes, grab a Steam Deck* and play a good game.<br><br>*Other devices are available.
+                I'm Alex, but you probably already guessed that - I mean, it does say my name right above this.
             </p>
             <div class="terminal">
                 <div class="terminal-line" data-scroll-to="currently-playing"><span class="prompt">></span> currently_playing</div>
@@ -33,59 +33,67 @@
                 <h2 class="section-title">Currently Playing</h2>
             </div>
             <div class="game-list">
-                <div class="game-item">
-                    <div class="game-ascii">☕</div>
-                    <div class="game-content">
-                        <h3>Cuphead</h3>
-                        <p>The run-and-gun game with an iconic style, and a difficulty that can make you question your life choices.</p>
-                        <div class="game-meta">
-                            <div class="meta-item">
-                                <span class="meta-label">STATUS:</span>
-                                <span class="meta-value">Getting There</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">DEATHS:</span>
-                                <span class="meta-value">Too Many</span>
+                
+                <a href="https://store.steampowered.com/app/2668510/Red_Dead_Redemption/" target="_blank">
+                    <div class="game-item">
+                        <div class="game-ascii">🐎</div>
+                        <div class="game-content">
+                            <h3>Red Dead Redemption</h3>
+                            <p>I've never played this before, despite it releasing a decade and a half ago, but it was definately worth the wait.</p>
+                            <div class="game-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">PLATFORM:</span>
+                                    <span class="meta-value">PC</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">HONOR:</span>
+                                    <span class="meta-value">Honest Joe</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
+                
+                <a href="https://store.steampowered.com/app/268910/Cuphead/" target="_blank">
+                    <div class="game-item">
+                        <div class="game-ascii">☕</div>
+                        <div class="game-content">
+                            <h3>Cuphead</h3>
+                            <p>A game known for both it's iconic style, and it's... <i>challenging</i> difficulty. They've managed to make a game that's simultaneously infuriating and addictive.</p>
+                            <div class="game-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">PLATFORM:</span>
+                                    <span class="meta-value">Steam Deck</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">DEATHS:</span>
+                                    <span class="meta-value">Too Many</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
-                <div class="game-item">
-                    <div class="game-ascii">👑</div>
-                    <div class="game-content">
-                        <h3>Blue Prince</h3>
-                        <p>There's a reason puzzle games don't normally involve RNG, but the devs didn't care, and I think they might've just pulled it off.</p>
-                        <div class="game-meta">
-                            <div class="meta-item">
-                                <span class="meta-label">STATUS:</span>
-                                <span class="meta-value">Obsessed</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">DAY:</span>
-                                <span class="meta-value">Lost Count</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="game-item">
-                    <div class="game-ascii">🥷</div>
-                    <div class="game-content">
-                        <h3>Shinobi: Art of Vengeance</h3>
-                        <p>A fast-paced game where strategy means to forget about your health and just hope for the best.</p>
-                        <div class="game-meta">
-                            <div class="meta-item">
-                                <span class="meta-label">STATUS:</span>
-                                <span class="meta-value">Training</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-label">STEALTH:</span>
-                                <span class="meta-value">Questionable</span>
+                <a href="https://store.steampowered.com/app/1569580/Blue_Prince/" target="_blank">
+                    <div class="game-item">
+                        <div class="game-ascii">👑</div>
+                        <div class="game-content">
+                            <h3>Blue Prince</h3>
+                            <p>There's a reason puzzle games don't normally involve RNG, but the devs just didn't care, and I think they might've actually pulled it off.</p>
+                            <div class="game-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">PLATFORM:</span>
+                                    <span class="meta-value">Steam Deck</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">DAY:</span>
+                                    <span class="meta-value">Lost Count</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
+                
             </div>
         </div>
     </section>
@@ -148,16 +156,16 @@
             </div>
             <div class="stats-grid">
                 <div class="stat-box">
-                    <div class="stat-label">Years Gaming</div>
+                    <div class="stat-label">Years PC Gaming</div>
                     <div class="stat-value" id="years-gaming">5</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-label">Games Owned</div>
-                    <div class="stat-value">68</div>
+                    <div class="stat-label">Resolutions Done</div>
+                    <div class="stat-value">0</div>
                 </div>
                 <div class="stat-box">
-                    <div class="stat-label">Resolutions done</div>
-                    <div class="stat-value">2</div>
+                    <div class="stat-label">Duolingo Streak</div>
+                    <div class="stat-value" id="duolingo-streak">100</div>
                 </div>
             </div>
         </div>
@@ -167,7 +175,7 @@
     <section class="quote-section">
         <div class="container">
             <blockquote class="quote" id="random-quote">
-                In the end, I realized that the real treasure wasn't the cake—it was the testing we did along the way.
+                The cake is a lie.
             </blockquote>
         </div>
     </section>
@@ -184,7 +192,8 @@
         \/          \/      \/
             </div>
             
-            <p>GAME OVER? PRESS START TO CONTINUE</p>
+            <p><a href="https://github.com/holtalex/Personal-site" target="_blank">Source Code</a></p>
+            <p>No personal data is collected by this site.<br>Trademarks are the property of their respective owners.</p>
             <p style="margin-top: 0.5rem;">Built with &lt;/&gt; and ♥</p>
         </div>
     </footer>
