@@ -1,4 +1,4 @@
-// Change favicon based on system theme
+// Changes favicon based on system theme
 // May not work in Safari due to aggressive caching
 document.head = document.head || document.getElementsByTagName('head')[0];
 
