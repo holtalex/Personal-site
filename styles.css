@@ -29,7 +29,7 @@ body {
     --accent-green: #0f0;
 }
 
-/* Themes are overwritten if the user is in dark mode */
+/* Themes are overwritten if the user is in light mode */
 @media (prefers-color-scheme: light) {
     body {
         background: #fff;

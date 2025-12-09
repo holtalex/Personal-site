@@ -44,12 +44,20 @@ document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
 });
 
 
+const today = new Date(); // Stores today's date
+
 // Calculate years gaming since Steam account creation
 const steamAccountDate = new Date('2020-04-26');
-const today = new Date();
 const yearsDiff = (today - steamAccountDate) / (1000 * 60 * 60 * 24 * 365.25);
 const yearsGaming = Math.floor(yearsDiff);
 document.getElementById('years-gaming').textContent = yearsGaming;
+
+// Calculate Duolingo streak
+const duolingoStreakStart = new Date('2025-07-03');
+let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
+duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
+const roundedStreakDays = Math.round(duolingoStreakDays);
+document.getElementById('duolingo-streak').textContent = roundedStreakDays;
 
 
 // Random quote rotation
