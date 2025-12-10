@@ -37,6 +37,13 @@ if (navigator.webdriver) {
     document.title = 'Alex Holt: Just someone in Essex with a website.';
     themedFavicon('favicon-dark.png');
 }
+// Shorten the meta description of indexed by Bing
+var botPattern = "(bingbot)";
+var re = new RegExp(botPattern, 'i');
+var userAgent = navigator.userAgent; 
+if (re.test(userAgent)) {
+    document.getElementsByTagName('meta')["description"].content = "If you're looking for the place track of what I'm playing, how many New Year's Resolutions I have completed, and whatever else I'm up to, then this is it.";
+}
 
 
 // Terminal navigation
