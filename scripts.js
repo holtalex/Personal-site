@@ -32,6 +32,11 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
 });
 
 
+// Change the title on page load, so the one set in the HTML is only used for SEO
+newPageTitle = 'Alex.';
+document.title = newPageTitle;
+
+
 // Terminal navigation
 document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
     line.addEventListener('click', function() {
