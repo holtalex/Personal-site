@@ -33,10 +33,7 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
 
 
 // Change the title on page load, so the one set in the HTML is only used for SEO, after a tiny delay
-setTimeout(() => {
-  newPageTitle = 'Alex.';
-    document.title = newPageTitle;
-}, 10);
+document.title = 'Alex.';
 
 
 // Terminal navigation
