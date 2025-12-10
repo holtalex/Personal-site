@@ -31,7 +31,7 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
     }
 });
 
-// Load bot definitions from external JSON and detect crawlers
+// Change the title and favicon for search engine crawlers
 function isCrawlerFromDefs(uaString, botDefs) {
     if (!uaString || !Array.isArray(botDefs)) return false;
     for (var i = 0; i < botDefs.length; i++) {
@@ -63,7 +63,7 @@ fetch('crawler-user-agents.json', { cache: 'no-store' })
         return response.json();
     })
     .then(function(botDefs) {
-        if (isCrawlerFromDefs(ua, botDefs)) {
+        if (isCrawlerFromDefs(ua, botDefs)) { // It's a crawler
             document.title = 'Alex Holt: Just someone in Essex with a website.';
             themedFavicon('favicon-dark.png');
         }
@@ -72,7 +72,7 @@ fetch('crawler-user-agents.json', { cache: 'no-store' })
         console.error('Error loading crawler definitions:', err);
     });
 
-// Shorten the meta description of indexed by Bing
+// Shorten the meta description when indexed by Bing
 var botPattern = "(bingbot)";
 var re = new RegExp(botPattern, 'i');
 var userAgent = navigator.userAgent; 
