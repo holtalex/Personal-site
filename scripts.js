@@ -31,53 +31,13 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
     }
 });
 
-// Change the title and favicon for search engine crawlers
-function isCrawlerFromDefs(uaString, botDefs) {
-    if (!uaString || !Array.isArray(botDefs)) return false;
-    for (var i = 0; i < botDefs.length; i++) {
-        var def = botDefs[i];
-        if (!def) continue;
-        if (def.pattern) {
-            try {
-                var re = new RegExp(def.pattern, 'i');
-                if (re.test(uaString)) return true;
-            } catch (e) {
-                // Ignore invalid regex patterns
-            }
-        }
-        if (Array.isArray(def.instances)) {
-            for (var j = 0; j < def.instances.length; j++) {
-                var inst = def.instances[j];
-                if (inst && uaString.indexOf(inst) !== -1) return true;
-            }
-        }
-    }
-    return false;
-}
 
-var ua = (typeof navigator !== 'undefined' && navigator.userAgent) ? navigator.userAgent : (typeof userAgent !== 'undefined' ? userAgent : '');
-
-fetch('crawler-user-agents.json', { cache: 'no-store' })
-    .then(function(response) {
-        if (!response.ok) throw new Error('Failed to load crawler-user-agents.json: ' + response.status);
-        return response.json();
-    })
-    .then(function(botDefs) {
-        if (isCrawlerFromDefs(ua, botDefs)) { // It's a crawler
-            document.title = 'Alex Holt: Just someone in Essex with a website.';
-            themedFavicon('favicon-dark.png');
-        }
-    })
-    .catch(function(err) {
-        console.error('Error loading crawler definitions:', err);
-    });
-
-// Shorten the meta description when indexed by Bing
-var botPattern = "(bingbot)";
+// Change the title when not being indexed by Bing (Bing hates small titles, but Google just deals with it)
+var botPattern = "(bingbot|adidxbot|bingpreview|microsoftpreview|bingvideopreview)";
 var re = new RegExp(botPattern, 'i');
 var userAgent = navigator.userAgent; 
-if (re.test(userAgent)) {
-    document.getElementsByTagName('meta')["description"].content = "If you're looking for the place track of what I'm playing, how many New Year's Resolutions I have completed, and whatever else I'm up to, then this is it.";
+if (!re.test(userAgent)) {
+    document.title = 'Alex.';
 }
 
 
