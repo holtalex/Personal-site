@@ -126,7 +126,9 @@ const quotes = [
     "Not Askin' You To Never Give Up. Sometimes You Gotta Let Go... Just Don't Let Anyone Change Who You Are, 'Kay?",
     "Sometimes the machines meant to serve us reveal more about humanity than we'd like to admit.",
     "When the sun goes down, you can just get… lost.",
-    "It's so much easier to see the world in black and white. Gray? I don't know what to do with gray..."
+    "It's so much easier to see the world in black and white. Gray? I don't know what to do with gray...",
+    "You, Sir, Are A Fish.",
+    "You Forget A Thousand Things Every Day, Pal. Make Sure This Is One Of 'Em."
 ];
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
