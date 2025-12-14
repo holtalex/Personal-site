@@ -120,7 +120,7 @@ const roundedStreakDays = Math.round(duolingoStreakDays);
 document.getElementById('duolingo-streak').textContent = roundedStreakDays;
 
 
-// Random quote rotation
+// Random video game quote rotation
 const quotes = [
     "The cake is a lie.",
     "Not Askin' You To Never Give Up. Sometimes You Gotta Let Go... Just Don't Let Anyone Change Who You Are, 'Kay?",
@@ -128,7 +128,8 @@ const quotes = [
     "When the sun goes down, you can just get… lost.",
     "It's so much easier to see the world in black and white. Gray? I don't know what to do with gray...",
     "You, Sir, Are A Fish.",
-    "You Forget A Thousand Things Every Day, Pal. Make Sure This Is One Of 'Em."
+    "You Forget A Thousand Things Every Day, Pal. Make Sure This Is One Of 'Em.",
+    "Just because I happen to be here when you call doesn't mean I'm waiting for you."
 ];
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
