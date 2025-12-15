@@ -32,6 +32,15 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
 });
 
 
+// Change the title when not being indexed by Bing (Bing hates small titles, but Google just deals with it)
+var botPattern = "(bingbot|adidxbot|bingpreview|microsoftpreview|bingvideopreview)";
+var re = new RegExp(botPattern, 'i');
+var userAgent = navigator.userAgent; 
+if (!re.test(userAgent)) {
+    document.title = 'Alex.';
+}
+
+
 // Terminal navigation
 document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
     line.addEventListener('click', function() {
@@ -111,13 +120,16 @@ const roundedStreakDays = Math.round(duolingoStreakDays);
 document.getElementById('duolingo-streak').textContent = roundedStreakDays;
 
 
-// Random quote rotation
+// Random video game quote rotation
 const quotes = [
     "The cake is a lie.",
     "Not Askin' You To Never Give Up. Sometimes You Gotta Let Go... Just Don't Let Anyone Change Who You Are, 'Kay?",
     "Sometimes the machines meant to serve us reveal more about humanity than we'd like to admit.",
     "When the sun goes down, you can just get… lost.",
-    "It's so much easier to see the world in black and white. Gray? I don't know what to do with gray..."
+    "It's so much easier to see the world in black and white. Gray? I don't know what to do with gray...",
+    "You, Sir, Are A Fish.",
+    "You Forget A Thousand Things Every Day, Pal. Make Sure This Is One Of 'Em.",
+    "Just because I happen to be here when you call doesn't mean I'm waiting for you."
 ];
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];

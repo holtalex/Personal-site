@@ -146,14 +146,14 @@ body {
 
 .year-nav {
     font-size: 1.5rem;
-    color: #555;
+    color: var(--grey-quaternary);
     cursor: pointer;
     transition: color 0.3s ease;
     user-select: none;
 }
 
 .year-nav:hover {
-    color: #fff;
+    color: var(--primary);
 }
 
 .year-nav.disabled {
