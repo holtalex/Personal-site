@@ -352,6 +352,10 @@ body {
     font-family: monospace;
 }
 
+.footer p {
+    margin-top: 0.5rem;
+}
+
 .footer a {
     color: var(--grey-quaternary);
     text-decoration: none;
