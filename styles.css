@@ -234,6 +234,11 @@ body {
     margin-top: 2rem;
 }
 
+.stats-grid a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .stat-box {
     border: 1px solid var(--grey-secondary);
     padding: 2rem;
@@ -256,6 +261,7 @@ body {
     font-size: 2.5rem;
     font-weight: 400;
 }
+
 
 /* Resolutions List */
 .resolutions-list {
