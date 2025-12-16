@@ -299,11 +299,6 @@ body {
     color: var(--primary);
 }
 
-.resolution-item.completed .resolution-text {
-    color: var(--grey-quaternary);
-    text-decoration: line-through;
-}
-
 /* Failed state */
 .resolution-item.failed .resolution-checkbox::after {
     content: '✗';
