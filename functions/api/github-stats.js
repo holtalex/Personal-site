@@ -31,6 +31,11 @@ export async function onRequest(context) {
             'User-Agent': 'Personal-Site-Stats'
           }
         });
+
+        if (!reposResponse.ok) {
+            const errorText = await reposResponse.text();
+            throw new Error(`GitHub API error: ${reposResponse.status} - ${errorText}`);
+        }
         
         if (langResponse.ok) {
           const languages = await langResponse.json();
