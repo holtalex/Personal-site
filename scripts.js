@@ -128,7 +128,6 @@ async function updateSteamStats() {
   }
 }
 
-updateSteamStats(); // Call when page loads
 
 // Get number of lines in this repo
 
@@ -145,7 +144,8 @@ async function updateGitHubStats() {
   }
 }
 
-updateGitHubStats(); // Call when page loads
+updateSteamStats(); // Call when page loads
+updateGitHubStats();
 
 
 // Random video game quote rotation
