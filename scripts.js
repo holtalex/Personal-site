@@ -114,22 +114,38 @@ const roundedStreakDays = Math.round(duolingoStreakDays);
 document.getElementById('duolingo-streak').textContent = roundedStreakDays;
 
 // Calculate how many lines of code in this repo
-const repoFileTypes = ['.html', '.css', '.js'];
+// const repoFileTypes = ['.html', '.css', '.js'];
 
-fetch('https://api.github.com/repos/holtalex/Personal-site/git/trees/main?recursive=1')
-    .then(res => res.json())
-    .then(async data => {
-        const repoFiles = data.tree.filter(file => repoFileTypes.some(ext => file.path.endsWith(ext)));
-        let totalCodeLines = 0;
+// fetch('https://api.github.com/repos/holtalex/Personal-site/git/trees/main?recursive=1')
+//     .then(res => res.json())
+//     .then(async data => {
+//         const repoFiles = data.tree.filter(file => repoFileTypes.some(ext => file.path.endsWith(ext)));
+//         let totalCodeLines = 0;
 
-        for (const file of repoFiles) {
-            const fileRes = await fetch(`https://raw.githubusercontent.com/holtalex/Personal-site/main/${file.path}`);
-            const fileText = await fileRes.text();
-            totalCodeLines += fileText.split('\n').length;
-        }
+//         for (const file of repoFiles) {
+//             const fileRes = await fetch(`https://raw.githubusercontent.com/holtalex/Personal-site/main/${file.path}`);
+//             const fileText = await fileRes.text();
+//             totalCodeLines += fileText.split('\n').length;
+//         }
 
-        document.getElementById('lines-code').textContent = totalCodeLines;
-    });
+//         document.getElementById('lines-code').textContent = totalCodeLines;
+//     });
+
+async function updateGitHubStats() {
+  try {
+    const response = await fetch('/api/github-stats');
+    const data = await response.json();
+    
+    document.getElementById('lines-of-code').textContent = 
+      data.lines.toLocaleString();
+  } catch (error) {
+    console.error('Failed to load GitHub stats:', error);
+    document.getElementById('lines-of-code').textContent = 'N/A';
+  }
+}
+
+// Call when page loads
+updateGitHubStats();
 
 
 // Random video game quote rotation
