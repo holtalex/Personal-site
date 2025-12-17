@@ -106,6 +106,22 @@ updateResolutionYear();
 
 const today = new Date(); // Stores today's date
 
+async function updateSteamStats() {
+  try {
+    const response = await fetch('/api/steam-stats');
+    const data = await response.json();
+    
+    document.getElementById('hours-gaming').textContent = 
+      data.hours.toLocaleString();
+  } catch (error) {
+    console.error('Failed to load Steam stats:', error);
+    document.getElementById('hours-gaming').textContent = 'N/A';
+  }
+}
+
+// Call when page loads
+updateSteamStats();
+
 // Calculate Duolingo streak
 const duolingoStreakStart = new Date('2025-07-03');
 let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
