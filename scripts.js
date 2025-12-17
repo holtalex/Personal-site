@@ -136,11 +136,11 @@ async function updateGitHubStats() {
     const response = await fetch('/api/github-stats');
     const data = await response.json();
     
-    document.getElementById('lines-of-code').textContent = 
+    document.getElementById('lines-code').textContent = 
       data.lines.toLocaleString();
   } catch (error) {
     console.error('Failed to load GitHub stats:', error);
-    document.getElementById('lines-of-code').textContent = 'N/A';
+    document.getElementById('lines-code').textContent = 'N/A';
   }
 }
 
