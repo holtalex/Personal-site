@@ -1,12 +1,27 @@
+// This function fetches the total number of lines of code in this Github repo, so it can be displayed in the stats section
+
+// Cache to store results (persists until redeployment)
+let cachedData = null;
+
 export async function onRequest(context) {
   const githubToken = context.env.githubApi;
-  const username = 'holtalex'; // ← Make sure this is YOUR actual username
+  const username = 'holtalex';
+  const repoName = 'Personal-site';
   
-  // Check if token exists
+  // Return cached data if available
+  if (cachedData) {
+    return new Response(JSON.stringify(cachedData), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'X-Cache': 'HIT'
+      }
+    });
+  }
+  
   if (!githubToken) {
     return new Response(JSON.stringify({ 
-      error: 'GitHub token not found',
-      details: 'Secret githubApi is not set in Cloudflare Pages environment variables'
+      error: 'GitHub token not found'
     }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
@@ -14,8 +29,9 @@ export async function onRequest(context) {
   }
   
   try {
-    const reposResponse = await fetch(
-      `https://api.github.com/users/${username}/repos?per_page=100`,
+    // Get the repository tree (all files)
+    const treeResponse = await fetch(
+      `https://api.github.com/repos/${username}/${repoName}/git/trees/main?recursive=1`,
       {
         headers: {
           'Authorization': `Bearer ${githubToken}`,
@@ -25,61 +41,75 @@ export async function onRequest(context) {
       }
     );
     
-    // Get detailed error info
-    if (!reposResponse.ok) {
-      const errorBody = await reposResponse.text();
+    if (!treeResponse.ok) {
+      const errorText = await treeResponse.text();
       return new Response(JSON.stringify({ 
-        error: 'GitHub API request failed',
-        status: reposResponse.status,
-        statusText: reposResponse.statusText,
-        body: errorBody,
-        username: username
+        error: 'Failed to fetch repository tree',
+        details: errorText
       }), {
         status: 500,
         headers: { 'Content-Type': 'application/json' }
       });
     }
     
-    const repos = await reposResponse.json();
-    let totalBytes = 0;
-    const webLanguages = ['HTML', 'CSS', 'JavaScript'];
+    const treeData = await treeResponse.json();
     
-    for (const repo of repos) {
-      if (!repo.fork) {
-        const langResponse = await fetch(repo.languages_url, {
+    // Filter for HTML, CSS, and JS files
+    const webFiles = treeData.tree.filter(item => {
+      if (item.type !== 'blob') return false;
+      const path = item.path.toLowerCase();
+      return path.endsWith('.html') || 
+             path.endsWith('.css') || 
+             path.endsWith('.js');
+    });
+    
+    let totalLines = 0;
+    
+    // Fetch and count lines for each file
+    for (const file of webFiles) {
+      const fileResponse = await fetch(
+        `https://api.github.com/repos/${username}/${repoName}/contents/${file.path}`,
+        {
           headers: {
             'Authorization': `Bearer ${githubToken}`,
             'Accept': 'application/vnd.github.v3+json',
             'User-Agent': 'Personal-Site-Stats'
           }
-        });
-        
-        if (langResponse.ok) {
-          const languages = await langResponse.json();
-          
-          for (const [lang, bytes] of Object.entries(languages)) {
-            if (webLanguages.includes(lang)) {
-              totalBytes += bytes;
-            }
-          }
         }
+      );
+      
+      if (fileResponse.ok) {
+        const fileData = await fileResponse.json();
+        
+        // Decode base64 content
+        const content = atob(fileData.content);
+        
+        // Count lines (split by newlines)
+        const lines = content.split('\n').length;
+        totalLines += lines;
       }
     }
     
-    const estimatedLines = Math.round(totalBytes / 50);
+    const result = { 
+      lines: totalLines,
+      fileCount: webFiles.length
+    };
     
-    return new Response(JSON.stringify({ lines: estimatedLines }), {
+    // Cache the result (persists until next deployment)
+    cachedData = result;
+    
+    return new Response(JSON.stringify(result), {
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        'Access-Control-Allow-Origin': '*',
+        'X-Cache': 'MISS'
       }
     });
     
   } catch (error) {
     return new Response(JSON.stringify({ 
       error: 'Caught exception',
-      message: error.message,
-      stack: error.stack
+      message: error.message
     }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
