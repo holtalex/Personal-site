@@ -14,7 +14,8 @@ export async function onRequest(context) {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'X-Cache': 'HIT'
+        'X-Cache': 'HIT',
+        'Cache-Control': 'public, max-age=86400' // Cache for 24 hours
       }
     });
   }
@@ -102,7 +103,8 @@ export async function onRequest(context) {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'X-Cache': 'MISS'
+        'X-Cache': 'MISS',
+        'Cache-Control': 'public, max-age=86400' // Cache for 24 hours
       }
     });
     

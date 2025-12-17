@@ -1,3 +1,5 @@
+// This function gets total hours played and number of games from Steam API to be displyayed in the stats section
+
 // Cache to store results (persists until redeployment)
 let cachedData = null;
 
@@ -11,7 +13,8 @@ export async function onRequest(context) {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'X-Cache': 'HIT'
+        'X-Cache': 'HIT',
+        'Cache-Control': 'public, max-age=86400'
       }
     });
   }
@@ -80,7 +83,8 @@ export async function onRequest(context) {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'X-Cache': 'MISS'
+        'X-Cache': 'MISS',
+        'Cache-Control': 'public, max-age=86400' // Cache for 24 hours
       }
     });
     
