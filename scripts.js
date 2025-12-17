@@ -113,23 +113,39 @@ duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
 const roundedStreakDays = Math.round(duolingoStreakDays);
 document.getElementById('duolingo-streak').textContent = roundedStreakDays;
 
-// Calculate how many lines of code in this repo
-const repoFileTypes = ['.html', '.css', '.js'];
+// Get number of hours gaming on Steam
 
-fetch('https://api.github.com/repos/holtalex/Personal-site/git/trees/main?recursive=1')
-    .then(res => res.json())
-    .then(async data => {
-        const repoFiles = data.tree.filter(file => repoFileTypes.some(ext => file.path.endsWith(ext)));
-        let totalCodeLines = 0;
+async function updateSteamStats() {
+  try {
+    const response = await fetch('/api/steam-stats');
+    const data = await response.json();
+    
+    document.getElementById('hours-gaming').textContent = 
+      data.hours.toLocaleString();
+  } catch (error) {
+    console.error('Failed to load Steam stats:', error);
+    document.getElementById('hours-gaming').textContent = 'N/A';
+  }
+}
 
-        for (const file of repoFiles) {
-            const fileRes = await fetch(`https://raw.githubusercontent.com/holtalex/Personal-site/main/${file.path}`);
-            const fileText = await fileRes.text();
-            totalCodeLines += fileText.split('\n').length;
-        }
+updateSteamStats(); // Call when page loads
 
-        document.getElementById('lines-code').textContent = totalCodeLines;
-    });
+// Get number of lines in this repo
+
+async function updateGitHubStats() {
+  try {
+    const response = await fetch('/api/github-stats');
+    const data = await response.json();
+    
+    document.getElementById('lines-code').textContent = 
+      data.lines.toLocaleString();
+  } catch (error) {
+    console.error('Failed to load GitHub stats:', error);
+    document.getElementById('lines-code').textContent = 'N/A';
+  }
+}
+
+updateGitHubStats(); // Call when page loads
 
 
 // Random video game quote rotation
