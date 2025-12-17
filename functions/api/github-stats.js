@@ -1,6 +1,17 @@
 export async function onRequest(context) {
   const githubToken = context.env.githubApi;
-  const username = 'holtalex'; // ← Change this!
+  const username = 'holtalex'; // ← Make sure this is YOUR actual username
+  
+  // Check if token exists
+  if (!githubToken) {
+    return new Response(JSON.stringify({ 
+      error: 'GitHub token not found',
+      details: 'Secret githubApi is not set in Cloudflare Pages environment variables'
+    }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
   
   try {
     const reposResponse = await fetch(
@@ -14,8 +25,19 @@ export async function onRequest(context) {
       }
     );
     
+    // Get detailed error info
     if (!reposResponse.ok) {
-      throw new Error('Failed to fetch repos');
+      const errorBody = await reposResponse.text();
+      return new Response(JSON.stringify({ 
+        error: 'GitHub API request failed',
+        status: reposResponse.status,
+        statusText: reposResponse.statusText,
+        body: errorBody,
+        username: username
+      }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
     
     const repos = await reposResponse.json();
@@ -31,11 +53,6 @@ export async function onRequest(context) {
             'User-Agent': 'Personal-Site-Stats'
           }
         });
-
-        if (!reposResponse.ok) {
-            const errorText = await reposResponse.text();
-            throw new Error(`GitHub API error: ${reposResponse.status} - ${errorText}`);
-        }
         
         if (langResponse.ok) {
           const languages = await langResponse.json();
@@ -59,7 +76,11 @@ export async function onRequest(context) {
     });
     
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ 
+      error: 'Caught exception',
+      message: error.message,
+      stack: error.stack
+    }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });
