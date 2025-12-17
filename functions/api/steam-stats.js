@@ -1,20 +1,22 @@
 // This function gets total hours played and number of games from Steam API to be displyayed in the stats section
 
-// Cache to store results (persists until redeployment)
+// Cache to store results (expires after 24 hours)
 let cachedData = null;
+let cacheTime = null;
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 export async function onRequest(context) {
   const steamApiKey = context.env.steamApi;
-  const steamId = context.env.steamId;
+  const steamId = context.env.steamId; // Loaded from environment variable
   
-  // Return cached data if available
-  if (cachedData) {
+  // Return cached data if still fresh
+  if (cachedData && cacheTime && (Date.now() - cacheTime < CACHE_DURATION)) {
     return new Response(JSON.stringify(cachedData), {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'X-Cache': 'HIT',
-        'Cache-Control': 'public, max-age=86400'
+        'Cache-Control': 'public, max-age=86400' // Cache for 24 hours
       }
     });
   }
@@ -76,8 +78,9 @@ export async function onRequest(context) {
       gameCount: gameCount
     };
     
-    // Cache the result
+    // Cache the result with timestamp
     cachedData = result;
+    cacheTime = Date.now();
     
     return new Response(JSON.stringify(result), {
       headers: {

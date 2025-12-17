@@ -66,9 +66,9 @@ export async function onRequest(context) {
     
     let totalLines = 0;
     
-    // Fetch and count lines for each file
-    for (const file of webFiles) {
-      const fileResponse = await fetch(
+    // Fetch all files in parallel (much faster!)
+    const filePromises = webFiles.map(file =>
+      fetch(
         `https://api.github.com/repos/${username}/${repoName}/contents/${file.path}`,
         {
           headers: {
@@ -77,15 +77,20 @@ export async function onRequest(context) {
             'User-Agent': 'Personal-Site-Stats'
           }
         }
-      );
-      
-      if (fileResponse.ok) {
-        const fileData = await fileResponse.json();
-        
-        // Decode base64 content
+      ).then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        return null;
+      })
+    );
+    
+    const fileResults = await Promise.all(filePromises);
+    
+    // Count lines from all files
+    for (const fileData of fileResults) {
+      if (fileData && fileData.content) {
         const content = atob(fileData.content);
-        
-        // Count lines (split by newlines)
         const lines = content.split('\n').length;
         totalLines += lines;
       }
