@@ -234,6 +234,11 @@ body {
     margin-top: 2rem;
 }
 
+.stats-grid a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .stat-box {
     border: 1px solid var(--grey-secondary);
     padding: 2rem;
@@ -256,6 +261,7 @@ body {
     font-size: 2.5rem;
     font-weight: 400;
 }
+
 
 /* Resolutions List */
 .resolutions-list {
@@ -297,11 +303,6 @@ body {
     content: '✓';
     opacity: 1;
     color: var(--primary);
-}
-
-.resolution-item.completed .resolution-text {
-    color: var(--grey-quaternary);
-    text-decoration: line-through;
 }
 
 /* Failed state */
@@ -355,6 +356,10 @@ body {
     color: var(--grey-tertiary);
     white-space: pre;
     font-family: monospace;
+}
+
+.footer p {
+    margin-top: 0.5rem;
 }
 
 .footer a {

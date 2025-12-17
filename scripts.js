@@ -106,18 +106,30 @@ updateResolutionYear();
 
 const today = new Date(); // Stores today's date
 
-// Calculate years gaming since Steam account creation
-const steamAccountDate = new Date('2020-04-26');
-const yearsDiff = (today - steamAccountDate) / (1000 * 60 * 60 * 24 * 365.25);
-const yearsGaming = Math.floor(yearsDiff);
-document.getElementById('years-gaming').textContent = yearsGaming;
-
 // Calculate Duolingo streak
 const duolingoStreakStart = new Date('2025-07-03');
 let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
 duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
 const roundedStreakDays = Math.round(duolingoStreakDays);
 document.getElementById('duolingo-streak').textContent = roundedStreakDays;
+
+// Calculate how many lines of code in this repo
+const repoFileTypes = ['.html', '.css', '.js'];
+
+fetch('https://api.github.com/repos/holtalex/Personal-site/git/trees/main?recursive=1')
+    .then(res => res.json())
+    .then(async data => {
+        const repoFiles = data.tree.filter(file => repoFileTypes.some(ext => file.path.endsWith(ext)));
+        let totalCodeLines = 0;
+
+        for (const file of repoFiles) {
+            const fileRes = await fetch(`https://raw.githubusercontent.com/holtalex/Personal-site/main/${file.path}`);
+            const fileText = await fileRes.text();
+            totalCodeLines += fileText.split('\n').length;
+        }
+
+        document.getElementById('lines-code').textContent = totalCodeLines;
+    });
 
 
 // Random video game quote rotation
