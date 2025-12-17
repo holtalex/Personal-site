@@ -106,6 +106,15 @@ updateResolutionYear();
 
 const today = new Date(); // Stores today's date
 
+// Calculate Duolingo streak
+const duolingoStreakStart = new Date('2025-07-03');
+let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
+duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
+const roundedStreakDays = Math.round(duolingoStreakDays);
+document.getElementById('duolingo-streak').textContent = roundedStreakDays;
+
+// Get number of hours gaming on Steam
+
 async function updateSteamStats() {
   try {
     const response = await fetch('/api/steam-stats');
@@ -119,33 +128,9 @@ async function updateSteamStats() {
   }
 }
 
-// Call when page loads
-updateSteamStats();
+updateSteamStats(); // Call when page loads
 
-// Calculate Duolingo streak
-const duolingoStreakStart = new Date('2025-07-03');
-let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
-duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
-const roundedStreakDays = Math.round(duolingoStreakDays);
-document.getElementById('duolingo-streak').textContent = roundedStreakDays;
-
-// Calculate how many lines of code in this repo
-// const repoFileTypes = ['.html', '.css', '.js'];
-
-// fetch('https://api.github.com/repos/holtalex/Personal-site/git/trees/main?recursive=1')
-//     .then(res => res.json())
-//     .then(async data => {
-//         const repoFiles = data.tree.filter(file => repoFileTypes.some(ext => file.path.endsWith(ext)));
-//         let totalCodeLines = 0;
-
-//         for (const file of repoFiles) {
-//             const fileRes = await fetch(`https://raw.githubusercontent.com/holtalex/Personal-site/main/${file.path}`);
-//             const fileText = await fileRes.text();
-//             totalCodeLines += fileText.split('\n').length;
-//         }
-
-//         document.getElementById('lines-code').textContent = totalCodeLines;
-//     });
+// Get number of lines in this repo
 
 async function updateGitHubStats() {
   try {
@@ -160,8 +145,7 @@ async function updateGitHubStats() {
   }
 }
 
-// Call when page loads
-updateGitHubStats();
+updateGitHubStats(); // Call when page loads
 
 
 // Random video game quote rotation
