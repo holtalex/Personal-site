@@ -2,7 +2,7 @@
 
 **Last updated:** 18/12/2025
 
-This Privacy Policy explains how this website, www.alexholt.uk, (the “Site”) handles information when you visit it.
+This Privacy Policy explains how this website, alexholt.uk, (the “Site”) handles information when you visit it.
 
 ---
 
@@ -116,6 +116,8 @@ Any updates will be posted on this page, with the “Last updated” date revise
 
 ## 10. Contact
 
-As the Site does not collect personal data or provide a contact mechanism, no direct data protection contact address is provided.
+If you have any questions about this Privacy Policy, you may contact the Site owner at:
 
-If required by law in the future, appropriate contact details will be made avaliable.
+Email: privacy@alexholt.uk
+
+This address is provided for privacy-related enquiries only.
