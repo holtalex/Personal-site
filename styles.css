@@ -29,13 +29,6 @@ body {
     --accent-green: #0f0;
 }
 
-/* This is just here so that if the user has a browser extension that forces a dark theme, it will detect that the site already has one */
-@media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
-    :root {
-        color: inherit;
-    }
-}
-
 /* Themes are overwritten if the user is in light mode */
 @media (prefers-color-scheme: light) {
     body {
