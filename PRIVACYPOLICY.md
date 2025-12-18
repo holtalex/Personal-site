@@ -108,9 +108,24 @@ Any data retention performed by third-party service providers is governed by the
 
 ## 8. Your Rights
 
-Under UK data protection law, individuals may have rights in relation to their personal data, including rights of access, rectification, and erasure.
+Under UK data protection law (such as the Data Protection Act 2018), individuals may have certain rights in relation to their personal data, including:
 
-As the Site owner does not collect or control personal data, requests relating to data processed by third parties should be directed to the relevant service provider.
+- The right to be informed about how personal data is used
+- The right of access to personal data
+- The right to rectification of inaccurate personal data
+- The right to erasure (in certain circumstances)
+- The right to restrict or object to processing (in certain circumstances)
+- The right to data portability (where applicable)
+
+As the Site owner does not collect, store, or control personal data relating to visitors, most of these rights will not apply directly to the operation of this Site.
+
+Where personal data is processed by third-party service providers (such as hosting providers or API services), those third parties are responsible for responding to rights requests in relation to the data they control.
+
+If you have concerns about how your personal data is handled, you also have the right to lodge a complaint with the UK Information Commissioner’s Office (ICO):
+
+- **Website:** https://ico.org.uk
+- **Telephone:** 0303 123 1113
+- **Address:** Information Commissioner’s Office, Wycliffe House, Water Lane, Wilmslow, Cheshire, SK9 5AF, United Kingdom
 
 ---
 
