@@ -28,13 +28,13 @@ The Site does not collect any personal data about visitors.
 
 Cookies may be used by the Site for functional purposes only. No cookies will be used for the purposes of tracking or analytics.
 
-Third-party services used by the Site may collected limited personal data, more details on which can be found below.
+Third-party services used by the Site may collect limited personal data, more details on which can be found below.
 
 ---
 
 ## Data Collected by Third-Parties
 
-Third-party services may be used by the Site for a number of reasons, including improved performance or to provide features. The third-parties used by the Site may change, but you can use the contact details at the end of this Privacy Policy to enquire about the third-party services which are currently used.
+Third-party services may be used by the Site for a number of reasons, including improved performance or to provide features. The third-parties used by the Site may change. To enquire about the third-parties currently used by the Site, please use the contact details provided at the end of this Privacy Policy.
 
 Theses services may transfer data to other geographical regions, including outside of the United Kingdom, which may have different laws regarding personal data.
 
@@ -69,18 +69,18 @@ Visitors are encouraged to review the privacy policies of any third-party websit
 
 Under UK law, individuals may have certain rights in relation to their personal data, including:
 
-- The right to be informed about how personal data is used
-- The right of access to personal data
-- The right to rectification of inaccurate personal data
-- The right to erasure
-- The right to restrict or object to processing
-- The right to data portability
+- Your right of access
+- Your right to rectification
+- Your right to erasure
+- Your right to restriction of processing
+- Your right to object to processing
+- Your right to data portability
 
-Many of these rights will not apply to the Site, as no personal data is collected. However, they may apply to third-party services used by the Site.
+Many of these rights will not apply directly to the Site, as no personal data is collected. However, they may apply to third-party services used by the Site.
 
 Where personal data is processed by third-party service providers, those third parties are responsible for responding to rights requests in relation to the data they control.
 
-If you have concerns about how your personal data is handled, you also have the right to lodge a complaint with the UK Information Commissioner’s Office (ICO), or other relevant authorities depending on your region.
+If you have concerns about how your personal data is handled, you also have the right to lodge a complaint with the UK Information Commissioner’s Office (ICO), or the relevant authority in your region.
 
 Details of how to lodge a complaint with the ICO, or other relevant authorities can be found on their respective websites.
 
