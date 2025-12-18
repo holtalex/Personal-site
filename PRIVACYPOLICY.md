@@ -59,6 +59,14 @@ The Site owner does not control, receive, or store any personal data collected b
 
 Each third-party service operates as an independent data controller for any data it processes.
 
+### 3.3 Links to Third-Party Websites
+
+The Site may contain links to third-party websites or services that are not operated or controlled by the Site owner.
+
+Any information you provide to, or that is collected by, third-party websites is governed by their own privacy policies and terms. The Site owner is not responsible for the privacy practices or content of third-party sites.
+
+Visitors are encouraged to review the privacy policies of any third-party websites they visit.
+
 ---
 
 ## 4. Cookies
