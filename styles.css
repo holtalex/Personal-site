@@ -358,6 +358,12 @@ body {
     font-family: monospace;
 }
 
+.footer-links li {
+    text-decoration: none;
+    display: inline;
+    margin: 0 0.5rem;
+}
+
 .footer p {
     margin-top: 0.5rem;
 }
