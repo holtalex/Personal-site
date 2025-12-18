@@ -1,5 +1,22 @@
 # Privacy Policy
 
+## Brief Summary
+
+This summary is provided for convenience only. It is **not legally binding** and does not replace the full Privacy Policy below. For complete and legally authoritative information, please refer to the full policy.
+
+**In short:**
+
+- The site does **not** collect personal data from visitors.
+- The site may use **strictly necessary, functional cookies** (for example, for security or performance), but **no tracking or analytics cookies**.
+- The site is hosted on Cloudflare Pages. Cloudflare may process technical data such as IP addresses under its own privacy policy.
+- The site displays publicly available statistics from third‑party services (such as gaming or coding platforms). These services may receive limited technical data (like IP addresses) when content is loaded, under **their own** privacy policies.
+- The site may link to third‑party websites, which are governed by their own privacy policies.
+- You can contact the site owner at **privacy@alexholt.uk** for privacy‑related questions.
+
+If you want the full legal detail, please continue reading the complete Privacy Policy below.
+
+---
+
 **Last updated:** 18/12/2025
 
 This Privacy Policy explains how this website, alexholt.uk, (the “Site”) handles information when you visit it.
