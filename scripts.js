@@ -124,7 +124,7 @@ async function updateSteamStats() {
       data.hours.toLocaleString();
   } catch (error) {
     console.error('Failed to load Steam stats:', error);
-    document.getElementById('hours-gaming').textContent = 'N/A';
+    document.getElementById('hours-gaming').textContent = '--';
   }
 }
 
@@ -140,7 +140,7 @@ async function updateGitHubStats() {
       data.lines.toLocaleString();
   } catch (error) {
     console.error('Failed to load GitHub stats:', error);
-    document.getElementById('lines-code').textContent = 'N/A';
+    document.getElementById('lines-code').textContent = '--';
   }
 }
 
