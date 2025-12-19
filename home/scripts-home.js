@@ -53,6 +53,36 @@ document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
 });
 
 
+// Get number of hours played per now playing game
+
+async function updateSteamStats() {
+  try {
+    const response = await fetch('/api/steam-stats');
+    const data = await response.json();
+    
+    // Map appids to their corresponding HTML element IDs
+    const gamesToTrack = [
+      { appid: 1876590, elementId: 'playingGameOne' },   // I Am Your Beast
+      { appid: 268910, elementId: 'playingGameTwo' },    // Cuphead
+      { appid: 1569580, elementId: 'playingGameThree' }  // Blue Prince
+    ];
+    
+    gamesToTrack.forEach(({ appid, elementId }) => {
+      const game = data.games.find(g => g.appid === appid);
+      document.getElementById(elementId).textContent = 
+        game?.playtimeHours.toLocaleString() ?? '0';
+    });
+    
+  } catch (error) {
+    console.error('Failed to load Steam stats:', error);
+    // Set all to error state
+    ['playingGameOne', 'playingGameTwo', 'playingGameThree'].forEach(id => {
+      document.getElementById(id).textContent = '--';
+    });
+  }
+}
+
+
 // Year navigation for resolutions
 let currentYear = 2025;
 const years = [2025, 2026];

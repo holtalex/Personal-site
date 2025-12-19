@@ -1,4 +1,4 @@
-// This function gets total hours played and number of games from Steam API to be displyayed in the stats section
+// This function gets total hours played and number of games from Steam API to be displayed in the stats section
 
 // Cache to store results (expires after 24 hours)
 let cachedData = null;
@@ -73,9 +73,20 @@ export async function onRequest(context) {
     const totalHours = Math.round(totalMinutes / 60);
     const gameCount = data.response.game_count;
     
+    // Map games to include name and playtime, sorted by playtime (most played first)
+    const gamesWithPlaytime = data.response.games
+      .map(game => ({
+        appid: game.appid,
+        name: game.name,
+        playtimeMinutes: game.playtime_forever || 0,
+        playtimeHours: Math.round((game.playtime_forever || 0) / 60 * 10) / 10, // Round to 1 decimal
+      }))
+      .sort((a, b) => b.playtimeMinutes - a.playtimeMinutes);
+    
     const result = {
       hours: totalHours,
-      gameCount: gameCount
+      gameCount: gameCount,
+      games: gamesWithPlaytime
     };
     
     // Cache the result with timestamp
