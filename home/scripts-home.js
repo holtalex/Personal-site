@@ -55,10 +55,10 @@ document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
 
 // Get number of hours played per now playing game
 
-async function updateSteamStats() {
+async function updatePlayTime() {
   try {
-    const response = await fetch('/api/steam-stats');
-    const data = await response.json();
+    const playingResponse = await fetch('/api/steam-stats');
+    const playingData = await playingResponse.json();
     
     // Map appids to their corresponding HTML element IDs
     const gamesToTrack = [
@@ -68,7 +68,7 @@ async function updateSteamStats() {
     ];
     
     gamesToTrack.forEach(({ appid, elementId }) => {
-      const game = data.games.find(g => g.appid === appid);
+      const game = playingData.games.find(g => g.appid === appid);
       document.getElementById(elementId).textContent = 
         game?.playtimeHours.toLocaleString() ?? '0';
     });
@@ -81,6 +81,8 @@ async function updateSteamStats() {
     });
   }
 }
+
+updatePlayTime(); // Call when page loads
 
 
 // Year navigation for resolutions
@@ -147,11 +149,11 @@ document.getElementById('duolingo-streak').textContent = roundedStreakDays;
 
 async function updateSteamStats() {
   try {
-    const response = await fetch('/api/steam-stats');
-    const data = await response.json();
+    const steamResponse = await fetch('/api/steam-stats');
+    const steamData = await steamResponse.json();
     
     document.getElementById('hours-gaming').textContent = 
-      data.hours.toLocaleString();
+      steamData.hours.toLocaleString();
   } catch (error) {
     console.error('Failed to load Steam stats:', error);
     document.getElementById('hours-gaming').textContent = '--';
@@ -163,11 +165,11 @@ async function updateSteamStats() {
 
 async function updateGitHubStats() {
   try {
-    const response = await fetch('/api/github-stats');
-    const data = await response.json();
+    const githubResponse = await fetch('/api/github-stats');
+    const githubData = await githubResponse.json();
     
     document.getElementById('lines-code').textContent = 
-      data.lines.toLocaleString();
+      githubData.lines.toLocaleString();
   } catch (error) {
     console.error('Failed to load GitHub stats:', error);
     document.getElementById('lines-code').textContent = '--';
