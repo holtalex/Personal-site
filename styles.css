@@ -21,11 +21,11 @@ body {
 :root {
     --primary: #fff;
     --background : #000;
-    --grey-primary: #111;
-    --grey-secondary: #222;
-    --grey-tertiary: #333;
-    --grey-quaternary: #555;
-    --grey-quinary: #888;
+    --grey-primary: #0a0a0a;
+    --grey-secondary: #1f1f1f;
+    --grey-tertiary: #2f2f2f;
+    --grey-quaternary: #777;
+    --grey-quinary: #999;
     --accent-green: #0f0;
 }
 
