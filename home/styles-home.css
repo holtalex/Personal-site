@@ -217,7 +217,7 @@
 .resolutions-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     margin-top: 2rem;
 }
 
@@ -225,7 +225,7 @@
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    padding: 1.5rem 0;
+    padding: 1.5rem 0 2.75rem 0;
     border-bottom: 1px solid var(--grey-primary);
 }
 
