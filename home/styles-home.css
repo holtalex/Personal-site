@@ -116,7 +116,7 @@
 .game-list {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .game-list a {
@@ -129,7 +129,7 @@
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 2rem;
-    padding: 2rem 0;
+    padding: 2rem 0 3rem 0;
     border-bottom: 1px solid var(--grey-primary);
     transition: all 0.3s ease;
 }
@@ -169,7 +169,7 @@
 }
 
 .meta-label {
-    color: var(--grey-quaternary);
+    color: var(--grey-tertiary);
 }
 
 .meta-value {
