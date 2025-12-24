@@ -224,8 +224,8 @@
 .resolution-item {
     display: flex;
     align-items: center;
-    gap: 1.375rem;
-    padding: 1.375rem 0 2.75rem 0;
+    gap: 1rem;
+    padding: 1rem 0 2rem 0;
     border-bottom: 1px solid var(--grey-primary);
 }
 
