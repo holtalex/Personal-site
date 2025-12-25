@@ -89,6 +89,15 @@
 
 .year-nav-container {
     display: flex;
+    justify-content: space-between;
+}
+
+.year-nav-container h3 {
+    font-weight: 400;
+}
+
+.year-nav-arrows {
+    display: flex;
     gap: 1rem;
     align-items: center;
     margin-left: auto;

@@ -6,7 +6,7 @@
     <meta name="description" content="If you want to see what I'm playing, how many New Year's resolutions I have (or haven't) completed, and whatever else I'm up to, then this is the place.">
     <link rel="icon" href="favicon-dark.png" id="dynamic-favicon">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="home/styles-home.css?v=3">
+    <link rel="stylesheet" href="home/styles-home.css?v=4">
     <title>Alex Holt: Just someone in Essex with a website.</title>
 </head>
 <body>
@@ -19,8 +19,8 @@
             </p>
             <div class="terminal">
                 <div class="terminal-line" data-scroll-to="currently-playing"><span class="prompt">></span> currently_playing</div>
-                <div class="terminal-line" data-scroll-to="resolutions"><span class="prompt">></span> resolutions</div>
-                <div class="terminal-line" data-scroll-to="stats"><span class="prompt">></span> stats</div>
+                <div class="terminal-line" data-scroll-to="resolutions"><span class="prompt">></span> new_years_resolutions</div>
+                <div class="terminal-line" data-scroll-to="stats"><span class="prompt">></span> statistics</div>
             </div>
         </div>
         <div class="scroll-hint">[SCROLL]</div>
@@ -31,7 +31,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-number">[01]</span>
-                <h2 class="section-title">Currently Playing</h2>
+                <h2 class="section-title">Currently Playing<span class="cursor"></span></h2>
             </div>
             <div class="game-list">
                 
@@ -105,13 +105,18 @@
             <div class="section-header">
                 <span class="section-number">[02]</span>
                 <h2 class="section-title">
-                    <span id="current-year">2025</span> Resolutions  <!-- Update the year here too for the default year -->
-                </h2>
+                    New Year's Resolutions<span class="cursor"></span></h2>
+            </div>
+            <div class="resolutions-nav-container">
                 <div class="year-nav-container">
-                    <span class="year-nav" id="prev-year">‹</span>
-                    <span class="year-nav" id="next-year">›</span>
+                    <h3><span id="current-year">2025</span></h3>  <!-- Update the year here too for the default year -->
+                    <div class="year-nav-arrows">
+                        <span class="year-nav" id="prev-year">‹</span>
+                        <span class="year-nav" id="next-year">›</span>
+                    </div>
                 </div>
             </div>
+            
             <div class="resolutions-list" id="resolutions-2025">
                 <!-- To mark as complete: add class="completed" to the resolution-item -->
                 <!-- To mark as failed: add class="failed" to the resolution-item -->
@@ -168,7 +173,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-number">[03]</span>
-                <h2 class="section-title">Stats</h2>
+                <h2 class="section-title">Statistics<span class="cursor"></span></h2>
             </div>
             <div class="stats-grid">
                 <a href="https://www.duolingo.com/profile/meisalex" target="_blank">
