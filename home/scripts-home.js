@@ -32,8 +32,8 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
 });
 
 
-// Change the title when not being indexed by Bing (Bing hates small titles, but Google just deals with it)
-var botPattern = "(bingbot|adidxbot|bingpreview|microsoftpreview|bingvideopreview)";
+// Change the title when not being indexed by Bing or Google
+var botPattern = "(bingbot|adidxbot|bingpreview|microsoftpreview|bingvideopreview|googlebot|Google-InspectionTool|GoogleOther|GoogleOther-Image|GoogleOther-Video|Googlebot-Discovery|Googlebot-Image|Googlebot-News|Googlebot-Video|Storebot-Google)";
 var re = new RegExp(botPattern, 'i');
 var userAgent = navigator.userAgent; 
 if (!re.test(userAgent)) {
