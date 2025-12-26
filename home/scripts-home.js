@@ -32,12 +32,13 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
 });
 
 
-// Change the title when not being indexed by Bing, Google, or other search engines
+// Change the title & favicon when not being indexed by Bing, Google, or other search engines
 var botPattern = "(bingbot|adidxbot|bingpreview|microsoftpreview|bingvideopreview|googlebot|Googlebot-Mobile|Google-InspectionTool|GoogleOther|GoogleOther-Image|GoogleOther-Video|Googlebot-Discovery|Googlebot-Image|Googlebot-News|Googlebot-Video|Storebot-Google|Bravest|Applebot|Applebot-Extended|AspiegelBot|Baiduspider|DuckDuckBot|Mojeek|MojeekBot|PetalBot|SeznamHomepageCrawler|Slurp|Teoma|Yahoo-Blogs|Yahoo-FeedSeeker|Yahoo-MMCrawler|YahooSeeker|Yandex|YandexBot|YandexAdditional|YandexAdditionalBot|baidu)";
 var re = new RegExp(botPattern, 'i');
 var userAgent = navigator.userAgent; 
 if (!re.test(userAgent)) {
     document.title = 'Alex.';
+    themedFavicon('favicon-dark.png');
 }
 
 
