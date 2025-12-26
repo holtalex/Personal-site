@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="If you want to see what I'm playing, how many New Year's resolutions I have (or haven't) completed, and whatever else I'm up to, then this is the place.">
     <link rel="icon" href="favicon-dark.png" id="dynamic-favicon">
-    <link rel="stylesheet" href="styles.css?v=2">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="home/styles-home.css?v=4">
     <title>Alex Holt: Just someone in Essex with a website.</title>
 </head>
 <body>
@@ -18,8 +19,8 @@
             </p>
             <div class="terminal">
                 <div class="terminal-line" data-scroll-to="currently-playing"><span class="prompt">></span> currently_playing</div>
-                <div class="terminal-line" data-scroll-to="resolutions"><span class="prompt">></span> resolutions</div>
-                <div class="terminal-line" data-scroll-to="stats"><span class="prompt">></span> stats</div>
+                <div class="terminal-line" data-scroll-to="resolutions"><span class="prompt">></span> new_years_resolutions</div>
+                <div class="terminal-line" data-scroll-to="stats"><span class="prompt">></span> statistics</div>
             </div>
         </div>
         <div class="scroll-hint">[SCROLL]</div>
@@ -30,24 +31,24 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-number">[01]</span>
-                <h2 class="section-title">Currently Playing</h2>
+                <h2 class="section-title">Currently Playing<span class="cursor"></span></h2>
             </div>
             <div class="game-list">
                 
-                <a href="https://store.steampowered.com/app/2668510/Red_Dead_Redemption/" target="_blank">
+                <a href="https://store.steampowered.com/app/1876590/I_Am_Your_Beast/" target="_blank">
                     <div class="game-item">
-                        <div class="game-ascii">🐎</div>
+                        <div class="game-ascii">🪖</div>
                         <div class="game-content">
-                            <h3>Red Dead Redemption</h3>
-                            <p>I've never played this before, despite it releasing a decade and a half ago, but it was definately worth the wait.</p>
+                            <h3>I Am Your Beast</h3>
+                            <p>A fast-paced FPS in a unique comic book style, what's not to like? Plus it's incredibly fun to master.</p>
                             <div class="game-meta">
                                 <div class="meta-item">
                                     <span class="meta-label">PLATFORM:</span>
                                     <span class="meta-value">PC</span>
                                 </div>
                                 <div class="meta-item">
-                                    <span class="meta-label">HONOR:</span>
-                                    <span class="meta-value">Honest Joe</span>
+                                    <span class="meta-label">HOURS PLAYED:</span>
+                                    <span class="meta-value" id="playingGameOne">00.0</span>
                                 </div>
                             </div>
                         </div>
@@ -66,28 +67,28 @@
                                     <span class="meta-value">Steam Deck</span>
                                 </div>
                                 <div class="meta-item">
-                                    <span class="meta-label">DEATHS:</span>
-                                    <span class="meta-value">Too Many</span>
+                                    <span class="meta-label">HOURS PLAYED:</span>
+                                    <span class="meta-value" id="playingGameTwo">00.0</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </a>
 
-                <a href="https://store.steampowered.com/app/1569580/Blue_Prince/" target="_blank">
+                <a href="https://store.steampowered.com/app/3059520/F1_25/" target="_blank">
                     <div class="game-item">
-                        <div class="game-ascii">👑</div>
+                        <div class="game-ascii">🏎️</div>
                         <div class="game-content">
-                            <h3>Blue Prince</h3>
-                            <p>There's a reason puzzle games don't normally involve RNG, but the devs just didn't care, and I think they might've actually pulled it off.</p>
+                            <h3>F1® 25</h3>
+                            <p>Even if you've never heard of the game, I'm pretty sure you could figure out the general idea: you race in F1.</p>
                             <div class="game-meta">
                                 <div class="meta-item">
                                     <span class="meta-label">PLATFORM:</span>
-                                    <span class="meta-value">Steam Deck</span>
+                                    <span class="meta-value">PC</span>
                                 </div>
                                 <div class="meta-item">
-                                    <span class="meta-label">DAY:</span>
-                                    <span class="meta-value">Lost Count</span>
+                                    <span class="meta-label">HOURS PLAYED:</span>
+                                    <span class="meta-value" id="playingGameThree">00.0</span>
                                 </div>
                             </div>
                         </div>
@@ -104,28 +105,33 @@
             <div class="section-header">
                 <span class="section-number">[02]</span>
                 <h2 class="section-title">
-                    <span id="current-year">2025</span> Resolutions  <!-- Update the year here too for the default year -->
-                </h2>
+                    New Year's Resolutions<span class="cursor"></span></h2>
+            </div>
+            <div class="resolutions-nav-container">
                 <div class="year-nav-container">
-                    <span class="year-nav" id="prev-year">‹</span>
-                    <span class="year-nav" id="next-year">›</span>
+                    <h3><span id="current-year">2025</span></h3>  <!-- Update the year here too for the default year -->
+                    <div class="year-nav-arrows">
+                        <span class="year-nav" id="prev-year">‹</span>
+                        <span class="year-nav" id="next-year">›</span>
+                    </div>
                 </div>
             </div>
+            
             <div class="resolutions-list" id="resolutions-2025">
                 <!-- To mark as complete: add class="completed" to the resolution-item -->
                 <!-- To mark as failed: add class="failed" to the resolution-item -->
                 <!-- To reset: remove the class -->
 
                 <!-- To ad new years, duplicate the div, then update the scripts.js file (see top of that file) -->
-                <div class="resolution-item">
+                <div class="resolution-item completed">
                     <div class="resolution-checkbox"></div>
                     <div class="resolution-text">Drink at least 1.5L of water per day</div>
                 </div>
-                <div class="resolution-item">
+                <div class="resolution-item failed">
                     <div class="resolution-checkbox"></div>
                     <div class="resolution-text">Get screen time down to below 3 hours a day</div>
                 </div>
-                <div class="resolution-item">
+                <div class="resolution-item completed">
                     <div class="resolution-checkbox"></div>
                     <div class="resolution-text">Complete every Apple Watch monthly challenge</div>
                 </div>
@@ -144,6 +150,21 @@
                     <div class="resolution-text">Read at least 5 books throughout the year</div>
                 </div>
             </div>
+
+            <div class="resolutions-stats">
+                <div class="resolutions-stats-item">
+                    <span class="resolutions-stats-label">RESOLUTIONS COMPLETED:</span>
+                    <span class="resolutions-stats-value">2</span>
+                </div>
+                <div class="resolutions-stats-item">
+                    <span class="resolutions-stats-label">RESOLUTIONS FAILED:</span>
+                    <span class="resolutions-stats-value">1</span>
+                </div>
+                <div class="resolutions-stats-item">
+                    <span class="resolutions-stats-label">RESOLUTIONS SET:</span>
+                    <span class="resolutions-stats-value">6</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -152,25 +173,25 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-number">[03]</span>
-                <h2 class="section-title">Stats</h2>
+                <h2 class="section-title">Statistics<span class="cursor"></span></h2>
             </div>
             <div class="stats-grid">
-                <a href="#resolutions">
+                <a href="https://www.duolingo.com/profile/meisalex" target="_blank">
                     <div class="stat-box">
                         <div class="stat-label">Duolingo Streak</div>
-                        <div class="stat-value" id="duolingo-streak">--</div>
+                        <div class="stat-value" id="duolingo-streak">000</div>
                     </div>
                 </a>
-                <a href="#currently-playing">
+                <a href="https://steamcommunity.com/id/lagwastaken/" target="_blank">
                     <div class="stat-box">
                         <div class="stat-label">Hours Gaming</div>
-                        <div class="stat-value" id="hours-gaming">--</div>
+                        <div class="stat-value" id="hours-gaming">000</div>
                     </div>
                 </a>
                 <a href="https://github.com/holtalex/Personal-site" target="_blank">
                     <div class="stat-box">
                         <div class="stat-label">Lines of Code</div>
-                        <div class="stat-value" id="lines-code">--</div>
+                        <div class="stat-value" id="lines-code">000</div>
                     </div>
                 </a>
             </div>
@@ -198,12 +219,18 @@
         \/          \/      \/
             </div>
             
-            <p><a href="https://github.com/holtalex/Personal-site" target="_blank">Source Code</a></p>
-            <p>No personal data is collected by this site.<br>Trademarks are the property of their respective owners.</p>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="https://github.com/holtalex/Personal-site" target="_blank">Source Code</a></li>
+                    <li><a href="/privacy/">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <p>Trademarks are the property of their respective owners.</p>
             <p>Built with &lt;/&gt; and ♥</p>
         </div>
     </footer>
 
     <script src="scripts.js"></script>
+    <script src="home/scripts-home.js"></script>
 </body>
 </html>
