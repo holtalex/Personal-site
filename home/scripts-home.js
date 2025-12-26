@@ -33,7 +33,7 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
 
 
 // Change the title when not being indexed by Bing or Google
-var botPattern = "(bingbot|adidxbot|bingpreview|microsoftpreview|bingvideopreview|googlebot|Google-InspectionTool|GoogleOther|GoogleOther-Image|GoogleOther-Video|Googlebot-Discovery|Googlebot-Image|Googlebot-News|Googlebot-Video|Storebot-Google)";
+var botPattern = "(bingbot|adidxbot|bingpreview|microsoftpreview|bingvideopreview|googlebot|Googlebot-Mobile|Google-InspectionTool|GoogleOther|GoogleOther-Image|GoogleOther-Video|Googlebot-Discovery|Googlebot-Image|Googlebot-News|Googlebot-Video|Storebot-Google)";
 var re = new RegExp(botPattern, 'i');
 var userAgent = navigator.userAgent; 
 if (!re.test(userAgent)) {
