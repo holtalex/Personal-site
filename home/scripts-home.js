@@ -197,8 +197,12 @@ document.getElementById('random-quote').textContent = randomQuote;
 
 // Remove scroll hint after first scroll
 let scrollHint = document.querySelector('.scroll-hint');
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', function handler() {
     if (window.scrollY > 100 && scrollHint) {
+        scrollHint.style.animation = 'none';
+        void scrollHint.offsetHeight;
+        scrollHint.style.transition = 'opacity 0.5s ease';
         scrollHint.style.opacity = '0';
+        window.removeEventListener('scroll', handler);
     }
-}, { once: true });
+});
