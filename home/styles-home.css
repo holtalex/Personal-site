@@ -352,6 +352,14 @@
 }
 
 
+/* Animation for [SCROLL] text in hero section */
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+
 /* Cursor effect */
 .cursor {
     display: inline-block;
@@ -387,11 +395,4 @@
     .scroll-hint {
         left: 1.5rem;
     }
-}
-
-/* Animation for [SCROLL] text in hero section */
-
-@keyframes fadeInOut {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 1; }
 }
