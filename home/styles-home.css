@@ -74,6 +74,7 @@
 }
 
 .scroll-hint {
+    margin-top: 0.3rem;
     font-size: 0.75rem;
     color: var(--grey-quaternary);
     animation: fadeInOut 3s ease-in-out infinite;
