@@ -65,8 +65,9 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 1.5rem;
     padding: 0 2rem;
     opacity: 0;
     animation: fadeIn 0.5s ease forwards;
@@ -74,15 +75,18 @@
 }
 
 .scroll-hint {
-    margin-top: 0.3rem;
     font-size: 0.75rem;
     color: var(--grey-quaternary);
     animation: fadeInOut 3s ease-in-out infinite;
+    line-height: 1;
+}
+
+.instagram-icon {
+    height: 1.75rem;
 }
 
 .hero-end svg {
     height: 1.75rem;
-    margin-bottom: 1rem;
     fill: var(--grey-quaternary);
     transition: fill 0.3s ease;
 }
