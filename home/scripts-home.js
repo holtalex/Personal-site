@@ -64,7 +64,7 @@ async function updatePlayTime() {
     const gamesToTrack = [
       { appid: 1876590, elementId: 'playingGameOne' },   // I Am Your Beast
       { appid: 268910, elementId: 'playingGameTwo' },    // Cuphead
-      { appid: 1569580, elementId: 'playingGameThree' }  // Blue Prince
+      { appid: 3059520, elementId: 'playingGameThree' }  // F1® 25
     ];
     
     gamesToTrack.forEach(({ appid, elementId }) => {
