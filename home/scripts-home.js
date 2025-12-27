@@ -27,21 +27,22 @@ favicons.forEach(favicon => {
         const re = new RegExp(botPattern, 'i');
         const userAgent = navigator.userAgent;
         if (!re.test(userAgent)) {
-            // document.title = 'Alex.';
+            document.title = 'Alex.';
             isBot = false;
-
-            // Set themed favicon on page load
-            const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-            
-            if (isLightMode) {
-                themedFavicon(false); // Use light mode
-            } else {
-                themedFavicon(true); // Use dark mode
-            }
         }
 
     } catch (error) {
         console.error('Failed to load bot patterns:', error);
+    }
+    
+    // Set themed favicon after bot check completes (whether it succeeded or not)
+    if (!isBot) {
+        const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (isLightMode) {
+            themedFavicon(false); // Use light mode
+        } else {
+            themedFavicon(true); // Use dark mode
+        }
     }
 })();
 
