@@ -1,5 +1,20 @@
 var isBot = true; // Assume bot until proven otherwise
 
+// Changes favicon based on system theme
+// May not work in Safari due to aggressive caching
+function themedFavicon(isDark) {
+var favicons = document.querySelectorAll('.dynamic-favicon');
+favicons.forEach(favicon => {
+    let url = favicon.href.split('?')[0]; // Remove any existing query params
+    if (isDark) {
+        url = url.replace(/\/light\//, '/dark/');
+    } else {
+        url = url.replace(/\/dark\//, '/light/');
+    }
+    favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
+});
+}
+
 // Check the user agent against ones used by crawlers/bots
 (async () => {
     try {
@@ -14,35 +29,20 @@ var isBot = true; // Assume bot until proven otherwise
         if (!re.test(userAgent)) {
             document.title = 'Alex.';
             isBot = false;
+
+            // Set themed favicon on page load
+            const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+            if (isLightMode) {
+                themedFavicon(false); // Use light mode
+            } else {
+                themedFavicon(true); // Use dark mode
+            }
         }
 
     } catch (error) {
         console.error('Failed to load bot patterns:', error);
     }
 })();
-
-// Changes favicon based on system theme
-// May not work in Safari due to aggressive caching
-function themedFavicon(isDark) {
-var favicons = document.querySelectorAll('.dynamic-favicon');
-favicons.forEach(favicon => {
-    let url = favicon.href.split('?')[0]; // Remove any existing query params
-    if (isDark || isBot) {
-        url = url.replace(/\/light\//, '/dark/');
-    } else {
-        url = url.replace(/\/dark\//, '/light/');
-    }
-    favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
-});
-}
-
-// Set themed favicon on page load (after bot check completes)
-const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-if (isLightMode) {
-    themedFavicon(false); // Use light mode
-} else {
-    themedFavicon(true); // Use dark mode
-}
 
 // Set themed favicon on theme change
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
