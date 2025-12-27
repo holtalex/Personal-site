@@ -36,6 +36,10 @@ if (!re.test(userAgent)) {
 //     themedFavicon(!e.matches);
 // });
 
+const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 
+                          window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'no-preference';
+console.log('Theme: ' + prefersColorScheme);
+
 // Terminal navigation
 document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
     line.addEventListener('click', function() {
