@@ -1,24 +1,11 @@
-var isBot = true;
+var isBot = true; // Assume it is a bot until proven otherwise
 
-// Check the user agent against ones used by crawlers/bots
-(async () => {
-    try {
-        const response = await fetch('../home/crawler-user-agents.json');
-        if (!response.ok) {
-            throw new Error('Could not find crawler-user-agents.json');
-        }
-        const data = await response.json();
-        const botPattern = "(" + data.patterns.join("|") + ")";
-        const re = new RegExp(botPattern, 'i');
-        const userAgent = navigator.userAgent;
-        if (!re.test(userAgent)) {
-            isBot = false;
-        }
-
-    } catch (error) {
-        console.error('Failed to load bot patterns:', error);
-    }
-})();
+var botPattern = "(Googlebot|Storebot-Google|GoogleOther|Google-Extended|AdsBot-Google-Mobile|AdsBot-Google|Mediapartners-Google|Google-Safety|Google-CWS|FeedFetcher-Google|Google-NotebookLM|Google-Pinpoint|GoogleProducer|Google-Site-Verification|APIs-Google|Bingbot|AdIdxBot|BingPreview|MicrosoftPreview|BingVideoPreview|DuckDuckBot|Bravestpplebot|Applebot-Extended|AspiegelBot|Baiduspider|DuckDuckBot|Mojeek|MojeekBot|PetalBot|SeznamHomepageCrawler|Slurp|Teoma|Yahoo-Blogs|Yahoo-FeedSeeker|Yahoo-MMCrawler|YahooSeeker|Yandex|YandexBot|YandexAdditional|YandexAdditionalBot|baidu)";
+var re = new RegExp(botPattern, 'i');
+var userAgent = navigator.userAgent; 
+if (!re.test(userAgent)) {
+    isBot = false;
+} 
 
 // Changes favicon based on system theme
 // May not work in Safari due to aggressive caching
