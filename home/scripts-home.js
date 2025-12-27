@@ -15,6 +15,7 @@ const botCheckPromise = (async () => {
         if (re.test(userAgent)) {
             document.title = 'Alex Holt: Just someone in Essex with a website.';
             isBot = true;
+            document.documentElement.style.backgroundColor = 'pink';
         }
 
     } catch (error) {
@@ -24,7 +25,6 @@ const botCheckPromise = (async () => {
 
 // Changes favicon based on system theme
 // May not work in Safari due to aggressive caching
-
 function themedFavicon(isDark) {
 var favicons = document.querySelectorAll('.dynamic-favicon');
 favicons.forEach(favicon => {
