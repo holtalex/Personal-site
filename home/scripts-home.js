@@ -30,7 +30,7 @@ const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
 if (isLightMode && !isBot) {
     themedFavicon('favicon-light.png');
 } else {
-    themedFavicon('favicon-dark.png');
+    themedFavicon('favicon.png');
 }
 
 // Set themed favicon on theme change
@@ -38,7 +38,7 @@ window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e 
     if (e.matches && !isBot) {
         themedFavicon('favicon-light.png');
     } else {
-        themedFavicon('favicon-dark.png');
+        themedFavicon('favicon.png');
     }
 });
 
