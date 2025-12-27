@@ -1,7 +1,7 @@
 var isBot = false;
 
 // Check the user agent against ones used by crawlers/bots
-const botCheckPromise = (async () => {
+(async () => {
     try {
         const response = await fetch('../home/crawler-user-agents.json');
         if (!response.ok) {
@@ -22,33 +22,28 @@ const botCheckPromise = (async () => {
 
 // Changes favicon based on system theme
 // May not work in Safari due to aggressive caching
-
 function themedFavicon(isDark) {
 var favicons = document.querySelectorAll('.dynamic-favicon');
 favicons.forEach(favicon => {
-    if (isDark) {
-        favicon.href = favicon.href.replace(/\/light\//, '/dark/');
+    let url = favicon.href.split('?')[0]; // Remove any existing query params
+    if (isDark || isBot) {
+        url = url.replace(/\/light\//, '/dark/');
     } else {
-        favicon.href = favicon.href.replace(/\/dark\//, '/light/');
+        url = url.replace(/\/dark\//, '/light/');
     }
+    favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
 });
 }
 
 // Set themed favicon on page load (after bot check completes)
-botCheckPromise.then(() => {
-    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-    if (isLightMode && !isBot) {
-        themedFavicon(false);  // Use light mode
-    } else {
-        themedFavicon(true);   // Use dark mode
-    }
-});
+const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+if (isLightMode) {
+    themedFavicon(false); // Use light mode
+} else {
+    themedFavicon(true); // Use dark mode
+}
 
 // Set themed favicon on theme change
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-    if (!isBot) {
-        themedFavicon(!e.matches);
-    } else {
-        themedFavicon(true);
-    }
+    themedFavicon(!e.matches);
 });
