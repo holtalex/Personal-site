@@ -4,27 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="If you want to see what I'm playing, how many New Year's resolutions I have (or haven't) completed, and whatever else I'm up to, then this is the place.">
+
     <!-- Default favicons (fallback, dark versions) -->
-    <link rel="icon" type="image/x-icon" href="favicons/dark/favicon.ico">
+    <!-- <link rel="icon" type="image/x-icon" href="favicons/dark/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicons/dark/favicon-32x32.png">
-    <link rel="manifest" href="favicons/dark/site.webmanifest">
+    <link rel="manifest" href="favicons/dark/site.webmanifest"> -->
     
     <!-- Light mode favicons -->
-    <link rel="icon" type="image/x-icon" href="favicons/light/favicon.ico" media="(prefers-color-scheme: light)">
+    <!-- <link rel="icon" type="image/x-icon" href="favicons/light/favicon.ico" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/png" sizes="16x16" href="favicons/light/favicon-16x16.png" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/png" sizes="32x32" href="favicons/light/favicon-32x32.png" media="(prefers-color-scheme: light)">
     <link rel="apple-touch-icon" sizes="180x180" href="favicons/light/apple-touch-icon.png" media="(prefers-color-scheme: light)">
-    <link rel="manifest" href="favicons/light/site.webmanifest" media="(prefers-color-scheme: light)">
+    <link rel="manifest" href="favicons/light/site.webmanifest" media="(prefers-color-scheme: light)"> -->
 
-    <!-- Dark mode favicons -->
-    <link rel="icon" type="image/x-icon" href="favicons/dark/favicon.ico" media="(prefers-color-scheme: dark), (prefers-colour-scheme: no-preference)">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicons/dark/favicon-16x16.png" media="(prefers-color-scheme: dark), (prefers-colour-scheme: no-preference)">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicons/dark/favicon-32x32.png" media="(prefers-color-scheme: dark), (prefers-colour-scheme: no-preference)">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicons/dark/apple-touch-icon.png" media="(prefers-color-scheme: dark), (prefers-colour-scheme: no-preference)">
-    <link rel="manifest" href="favicons/dark/site.webmanifest" media="(prefers-color-scheme: dark), (prefers-colour-scheme: no-preference)">
-    
-    <!-- SVG favicons with embedded colour changing -->
+    <!-- SVG favicons which automatically change depending on the user's light/dark mode theme -->
     <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg">
+
+    <!-- Favicons - defaults to dark mode, but is changed dynamically in JS to reflect user settings -->
+    <link rel="icon" type="image/x-icon" href="favicons/dark/favicon.ico" class="dynamic-favicon">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/dark/favicon-16x16.png" class="dynamic-favicon">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/dark/favicon-32x32.png" class="dynamic-favicon">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/dark/apple-touch-icon.png" class="dynamic-favicon">
+    <link rel="manifest" href="favicons/dark/site.webmanifest" class="dynamic-favicon">
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="home/styles-home.css?v=5">

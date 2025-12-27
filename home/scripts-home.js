@@ -12,33 +12,30 @@ if (!re.test(userAgent)) {
 // Changes favicon based on system theme
 // May not work in Safari due to aggressive caching
 
-// function themedFavicon(isDark) {
-//  var favicons = document.querySelectorAll('.dynamic-favicon');
-//  favicons.forEach(favicon => {
-//      if (isDark) {
-//          favicon.href = favicon.href.replace(/\/light\//, '/dark/');
-//      } else {
-//          favicon.href = favicon.href.replace(/\/dark\//, '/light/');
-//      }
-//  });
-// }
+function themedFavicon(isDark) {
+ var favicons = document.querySelectorAll('.dynamic-favicon');
+ favicons.forEach(favicon => {
+     if (isDark || isBot) {
+         favicon.href = favicon.href.replace(/\/light\//, '/dark/');
+     } else {
+         favicon.href = favicon.href.replace(/\/dark\//, '/light/');
+     }
+ });
+}
 
-// // Set themed favicon on page load
-// const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-// if (isLightMode && !isBot) {
-//     themedFavicon(false);  // Use light mode
-// } else {
-//     themedFavicon(true);   // Use dark mode
-// }
+// Set themed favicon on page load
+const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+if (isLightMode) {
+    themedFavicon(false);  // Use light mode
+} else {
+    themedFavicon(true);   // Use dark mode
+}
 
-// // Set themed favicon on theme change
-// window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-//     themedFavicon(!e.matches);
-// });
+// Set themed favicon on theme change
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+    themedFavicon(!e.matches);
+});
 
-const prefersColorScheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 
-                          window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'no-preference';
-console.log('Theme: ' + prefersColorScheme);
 
 // Terminal navigation
 document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
