@@ -29,15 +29,12 @@ async function isCrawler() {
     return botDetected;
 }
 
-let botCheckPromise = new Promise(function(resolve) {
-    isCrawler().then(function(result) {
-        resolve(result);
-    });
-});
+var isBot = isCrawler();
+isBot = false;
 
-botCheckPromise.then(function(result) {
-    var isBot = result;
-    
+setTimeout(() => {
+    console.log("isBot:", isBot);
+
     // Changes favicon based on system theme
     // May not work in Safari due to aggressive caching
     function themedFavicon(isDark) {
@@ -65,7 +62,7 @@ botCheckPromise.then(function(result) {
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
         themedFavicon(!e.matches);
     });
-});
+}, 100);
 
 
 // Terminal navigation
