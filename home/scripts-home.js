@@ -12,7 +12,7 @@ var isBot = false;
         const botPattern = "(" + data.patterns.join("|") + ")";
         const re = new RegExp(botPattern, 'i');
         const userAgent = navigator.userAgent;
-        if (re.test(userAgent)) {
+        if (!re.test(userAgent)) {
             document.title = 'Alex Holt: Just someone in Essex with a website.';
             isBot = true;
         }
