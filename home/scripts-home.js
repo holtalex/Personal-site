@@ -1,6 +1,21 @@
 document.title = 'Alex.'; // Change the page title, but change it again if it is a bot - the check is a bit slow, so this prevents a delay
 var isBot = false;
 
+// Changes favicon based on system theme
+// May not work in Safari due to aggressive caching
+function themedFavicon(isDark) {
+var favicons = document.querySelectorAll('.dynamic-favicon');
+favicons.forEach(favicon => {
+    let url = favicon.href.split('?')[0]; // Remove any existing query params
+    if (isDark || isBot) {
+        url = url.replace(/\/light\//, '/dark/');
+    } else {
+        url = url.replace(/\/dark\//, '/light/');
+    }
+    favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
+});
+}
+
 // Check the user agent against ones used by crawlers/bots
 const botCheckPromise = (async () => {
     try {
@@ -20,32 +35,21 @@ const botCheckPromise = (async () => {
     } catch (error) {
         console.error('Failed to load bot patterns:', error);
     }
-})();
 
-// Changes favicon based on system theme
-// May not work in Safari due to aggressive caching
-function themedFavicon(isDark) {
-var favicons = document.querySelectorAll('.dynamic-favicon');
-favicons.forEach(favicon => {
-    let url = favicon.href.split('?')[0]; // Remove any existing query params
-    if (isDark || isBot) {
-        url = url.replace(/\/light\//, '/dark/');
-    } else {
-        url = url.replace(/\/dark\//, '/light/');
-    }
-    favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
-});
-}
-
-// Set themed favicon on page load (after bot check completes)
-botCheckPromise.then(() => {
     const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
     if (isLightMode) {
         themedFavicon(false); // Use light mode
     } else {
         themedFavicon(true); // Use dark mode
     }
-});
+})();
+
+
+
+// Set themed favicon on page load (after bot check completes)
+// botCheckPromise.then(() => {
+
+// });
 
 // Set themed favicon on theme change
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
