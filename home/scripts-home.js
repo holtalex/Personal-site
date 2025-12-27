@@ -15,8 +15,6 @@ favicons.forEach(favicon => {
 });
 }
 
-themedFavicon(false);
-
 // Check the user agent against ones used by crawlers/bots
 (async () => {
     try {
@@ -35,11 +33,11 @@ themedFavicon(false);
             // Set themed favicon on page load
             const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
             
-            // if (isLightMode) {
-            //     themedFavicon(false); // Use light mode
-            // } else {
-            //     themedFavicon(true); // Use dark mode
-            // }
+            if (isLightMode) {
+                themedFavicon(false); // Use light mode
+            } else {
+                themedFavicon(true); // Use dark mode
+            }
         }
 
     } catch (error) {
