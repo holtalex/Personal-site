@@ -41,9 +41,7 @@ var isBot = false;
 
         // Set themed favicon on theme change
         window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-            if (!isBot) {
-                themedFavicon(!e.matches);
-            } else return;
+            themedFavicon(!e.matches);
         });
 
     } catch (error) {
