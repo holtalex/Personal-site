@@ -23,7 +23,7 @@ var isBot = true; // Assume bot until proven otherwise
             favicons.forEach(favicon => {
                 let url = favicon.href.split('?')[0]; // Remove any existing query params
                 if (!isLightMode) {
-                    url = url.replace(/\/light\//, '/dark/');
+                    url = url.replace(/\/dark\//, '/light/');
                 } else {
                     url = url.replace(/\/dark\//, '/light/');
                 }
@@ -51,7 +51,7 @@ var isBot = true; // Assume bot until proven otherwise
 // Set themed favicon on theme change
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
     var favicons = document.querySelectorAll('.dynamic-favicon');
-    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+    const isLightMode = !e.matches;
     favicons.forEach(favicon => {
         let url = favicon.href.split('?')[0]; // Remove any existing query params
         if (!isLightMode) {
