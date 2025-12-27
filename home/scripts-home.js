@@ -1,12 +1,12 @@
-var isBot = true; // Assume bot until proven otherwise
+// var isBot = true; // Assume bot until proven otherwise
 
 // Changes favicon based on system theme
 // May not work in Safari due to aggressive caching
 
 // Check the user agent against ones used by crawlers/bots
-(async () => {
+async function isCrawler() {
     try {
-        const response = await fetch('crawler-user-agents.json');
+        const response = await fetch('https://alexholt.uk/home/crawler-user-agents.json');
         if (!response.ok) {
             throw new Error('Could not find crawler-user-agents.json');
         }
@@ -16,52 +16,54 @@ var isBot = true; // Assume bot until proven otherwise
         const userAgent = navigator.userAgent;
         if (!re.test(userAgent)) {
             document.title = 'Alex.';
-            isBot = false;
+            var botDetected = false;
+
+        } else {
+            var botDetected = true;
         }
 
     } catch (error) {
         console.error('Failed to load bot patterns:', error);
     }
+        
+    return botDetected;
+}
 
-    if (!isBot) {
-        var favicons = document.querySelectorAll('.dynamic-favicon');
-        const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-        favicons.forEach(favicon => {
-            let url = favicon.href.split('?')[0]; // Remove any existing query params
-            if (!isLightMode) {
-                url = url.replace(/\/light\//, '/dark/');
-            } else {
-                url = url.replace(/\/dark\//, '/light/');
-            }
-            favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
-        });
-    }
-})();
+let botCheckPromise = new Promise(function(resolve) {
+    isCrawler().then(function(result) {
+        resolve(result);
+    });
+});
 
-// Set themed favicon after bot check completes
-// setTimeout(() => {
-//     if (!isBot) {
-//         const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-//         if (isLightMode) {
-//             themedFavicon(false); // Use light mode
-//         } else {
-//             themedFavicon(true); // Use dark mode
-//         }
-//     }
-// }, 500);
-
-// Set themed favicon on theme change
-window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+botCheckPromise.then(function(result) {
+    var isBot = result;
+    
+    // Changes favicon based on system theme
+    // May not work in Safari due to aggressive caching
+    function themedFavicon(isDark) {
     var favicons = document.querySelectorAll('.dynamic-favicon');
-    const isLightMode = !e.matches;
     favicons.forEach(favicon => {
         let url = favicon.href.split('?')[0]; // Remove any existing query params
-        if (!isLightMode) {
+        if (isDark || isBot) {
             url = url.replace(/\/light\//, '/dark/');
         } else {
             url = url.replace(/\/dark\//, '/light/');
         }
         favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
+    });
+    }
+
+    // Set themed favicon on page load (after bot check completes)
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+    if (isLightMode) {
+        themedFavicon(false); // Use light mode
+    } else {
+        themedFavicon(true); // Use dark mode
+    }
+
+    // Set themed favicon on theme change
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+        themedFavicon(!e.matches);
     });
 });
 
