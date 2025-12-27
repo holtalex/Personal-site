@@ -27,7 +27,7 @@ favicons.forEach(favicon => {
         const re = new RegExp(botPattern, 'i');
         const userAgent = navigator.userAgent;
         if (!re.test(userAgent)) {
-            document.title = 'Alex.';
+            // document.title = 'Alex.';
             isBot = false;
 
             // Set themed favicon on page load
