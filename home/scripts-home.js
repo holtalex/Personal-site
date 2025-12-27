@@ -2,7 +2,7 @@ document.title = 'Alex.'; // Change the page title, but change it again if it is
 var isBot = false;
 
 // Check the user agent against ones used by crawlers/bots
-(async () => {
+const botCheckPromise = (async () => {
     try {
         const response = await fetch('crawler-user-agents.json');
         if (!response.ok) {
@@ -12,7 +12,7 @@ var isBot = false;
         const botPattern = "(" + data.patterns.join("|") + ")";
         const re = new RegExp(botPattern, 'i');
         const userAgent = navigator.userAgent;
-        if (!re.test(userAgent)) {
+        if (re.test(userAgent)) {
             document.title = 'Alex Holt: Just someone in Essex with a website.';
             isBot = true;
         }
@@ -36,17 +36,23 @@ favicons.forEach(favicon => {
 });
 }
 
-// Set themed favicon on page load
-const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-if (isLightMode && !isBot) {
-    themedFavicon(false);  // Use light mode
-} else {
-    themedFavicon(true);   // Use dark mode
-}
+// Set themed favicon on page load (after bot check completes)
+botCheckPromise.then(() => {
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+    if (isLightMode && !isBot) {
+        themedFavicon(false);  // Use light mode
+    } else {
+        themedFavicon(true);   // Use dark mode
+    }
+});
 
 // Set themed favicon on theme change
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-    themedFavicon(!e.matches);
+    if (!isBot) {
+        themedFavicon(!e.matches);
+    } else {
+        themedFavicon(true);
+    }
 });
 
 
