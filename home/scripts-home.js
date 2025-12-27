@@ -17,22 +17,24 @@ var isBot = true; // Assume bot until proven otherwise
         if (!re.test(userAgent)) {
             document.title = 'Alex.';
             isBot = false;
-
-            var favicons = document.querySelectorAll('.dynamic-favicon');
-            const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-            favicons.forEach(favicon => {
-                let url = favicon.href.split('?')[0]; // Remove any existing query params
-                if (!isLightMode) {
-                    url = url.replace(/\/dark\//, '/light/');
-                } else {
-                    url = url.replace(/\/dark\//, '/light/');
-                }
-                favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
-            });
         }
 
     } catch (error) {
         console.error('Failed to load bot patterns:', error);
+    }
+
+    if (!isBot) {
+        var favicons = document.querySelectorAll('.dynamic-favicon');
+        const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+        favicons.forEach(favicon => {
+            let url = favicon.href.split('?')[0]; // Remove any existing query params
+            if (!isLightMode) {
+                url = url.replace(/\/light\//, '/dark/');
+            } else {
+                url = url.replace(/\/dark\//, '/light/');
+            }
+            favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
+        });
     }
 })();
 
