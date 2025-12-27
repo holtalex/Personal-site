@@ -1,6 +1,6 @@
 var isBot = true; // Assume it is a bot until proven otherwise
 
-var botPattern = "(Googlebot|Storebot-Google|GoogleOther|Google-Extended|AdsBot-Google-Mobile|AdsBot-Google|Mediapartners-Google|Google-Safety|Google-CWS|FeedFetcher-Google|Google-NotebookLM|Google-Pinpoint|GoogleProducer|Google-Site-Verification|APIs-Google|Bingbot|AdIdxBot|BingPreview|MicrosoftPreview|BingVideoPreview|DuckDuckBot|Bravestpplebot|Applebot-Extended|AspiegelBot|Baiduspider|DuckDuckBot|Mojeek|MojeekBot|PetalBot|SeznamHomepageCrawler|Slurp|Teoma|Yahoo-Blogs|Yahoo-FeedSeeker|Yahoo-MMCrawler|YahooSeeker|Yandex|YandexBot|YandexAdditional|YandexAdditionalBot|baidu)";
+var botPattern = "(Googlebot|Googlebot-Image|Googlebot-Video|Googlebot-News|Google-InspectionTool|Storebot-Google|GoogleOther|GoogleOther-Image|GoogleOther-Video|Google-CloudVertexBot|Google-Extended|AdsBot-Google-Mobile|AdsBot-Google|Mediapartners-Google|Google-Safety|Google-CWS|FeedFetcher-Google|Google-NotebookLM|Google-Pinpoint|GoogleProducer|Google-Site-Verification|APIs-Google|Bingbot|AdIdxBot|BingPreview|MicrosoftPreview|BingVideoPreview|DuckDuckBot|Bravestpplebot|Applebot-Extended|AspiegelBot|Baiduspider|DuckDuckBot|Mojeek|MojeekBot|PetalBot|SeznamHomepageCrawler|Slurp|Teoma|Yahoo-Blogs|Yahoo-FeedSeeker|Yahoo-MMCrawler|YahooSeeker|Yandex|YandexBot|YandexAdditional|YandexAdditionalBot|baidu)";
 var re = new RegExp(botPattern, 'i');
 var userAgent = navigator.userAgent; 
 if (!re.test(userAgent)) {
