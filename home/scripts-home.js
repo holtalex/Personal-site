@@ -4,7 +4,7 @@ var isBot = false;
 // Check the user agent against ones used by crawlers/bots
 (async () => {
     try {
-        const response = await fetch('/Personal-site/crawler-user-agents.json');
+        const response = await fetch('../crawler-user-agents.json');
         if (!response.ok) {
             throw new Error('Could not find crawler-user-agents.json');
         }
