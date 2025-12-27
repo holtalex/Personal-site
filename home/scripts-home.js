@@ -34,8 +34,10 @@ favicons.forEach(favicon => {
     } catch (error) {
         console.error('Failed to load bot patterns:', error);
     }
-    
-    // Set themed favicon after bot check completes (whether it succeeded or not)
+})();
+
+// Set themed favicon after bot check completes
+setTimeout(() => {
     if (!isBot) {
         const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
         if (isLightMode) {
@@ -44,7 +46,7 @@ favicons.forEach(favicon => {
             themedFavicon(true); // Use dark mode
         }
     }
-})();
+}, 500);
 
 // Set themed favicon on theme change
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
