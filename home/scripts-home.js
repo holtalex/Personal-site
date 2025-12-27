@@ -19,12 +19,11 @@ var isBot = false;
 
     } catch (error) {
         console.error('Failed to load bot patterns:', error);
-        // If we can't load the patterns, assume it's a bot (safer default)
     }
 })();
 
 // Changes favicon based on system theme
-    // May not work in Safari due to aggressive caching
+// May not work in Safari due to aggressive caching
 
 function themedFavicon(isDark) {
 var favicons = document.querySelectorAll('.dynamic-favicon');
