@@ -27,25 +27,23 @@ const botCheckPromise = (async () => {
 function themedFavicon(isDark) {
 var favicons = document.querySelectorAll('.dynamic-favicon');
 favicons.forEach(favicon => {
+    let url = favicon.href.split('?')[0]; // Remove any existing query params
     if (isDark || isBot) {
-        favicon.href = favicon.href.replace(/\/light\//, '/dark/');
+        url = url.replace(/\/light\//, '/dark/');
     } else {
-        favicon.href = favicon.href.replace(/\/dark\//, '/light/');
+        url = url.replace(/\/dark\//, '/light/');
     }
+    favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
 });
 }
 
 // Set themed favicon on page load (after bot check completes)
-// Use Promise.race with a timeout so favicon gets set even if bot check fails
-Promise.race([
-    botCheckPromise,
-    new Promise(resolve => setTimeout(resolve, 2000))
-]).then(() => {
+botCheckPromise.then(() => {
     const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
     if (isLightMode) {
         themedFavicon(false); // Use light mode
     } else {
-        themedFavicon(true);  // Use dark mode
+        themedFavicon(true); // Use dark mode
     }
 });
 
