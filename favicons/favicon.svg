@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512">
   <style>
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: dark), (prefers-colour-scheme: no-preference) {
         :root {
             --background-colour: #000;
             --text-colour: #fff;
