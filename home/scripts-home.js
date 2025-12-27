@@ -1,6 +1,8 @@
 document.title = 'Alex.'; // Change the page title, but change it again if it is a bot - the check is a bit slow, so this prevents a delay
 var isBot = false;
 
+console.log("Hello world");
+
 // Check the user agent against ones used by crawlers/bots
 (async () => {
     try {
