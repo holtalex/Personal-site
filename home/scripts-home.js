@@ -4,7 +4,7 @@ var isBot = false;
 // Check the user agent against ones used by crawlers/bots
 const botCheckPromise = (async () => {
     try {
-        const response = await fetch('https://testing.personal-site-2f6.pages.dev/home/crawler-user-agents.json');
+        const response = await fetch('crawler-user-agents.json');
         if (!response.ok) {
             throw new Error('Could not find crawler-user-agents.json');
         }
@@ -36,12 +36,16 @@ favicons.forEach(favicon => {
 }
 
 // Set themed favicon on page load (after bot check completes)
-botCheckPromise.then(() => {
+// Use Promise.race with a timeout so favicon gets set even if bot check fails
+Promise.race([
+    botCheckPromise,
+    new Promise(resolve => setTimeout(resolve, 2000))
+]).then(() => {
     const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
     if (isLightMode) {
-        themedFavicon(false);  // Use light mode
+        themedFavicon(false); // Use light mode
     } else {
-        themedFavicon(true);   // Use dark mode
+        themedFavicon(true);  // Use dark mode
     }
 });
 
