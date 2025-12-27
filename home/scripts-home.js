@@ -4,7 +4,7 @@ var isBot = false;
 // Check the user agent against ones used by crawlers/bots
 const botCheckPromise = (async () => {
     try {
-        const response = await fetch('crawler-user-agents.json');
+        const response = await fetch('../Personal-site/home/crawler-user-agents.json');
         if (!response.ok) {
             throw new Error('Could not find crawler-user-agents.json');
         }
@@ -15,7 +15,6 @@ const botCheckPromise = (async () => {
         if (re.test(userAgent)) {
             document.title = 'Alex Holt: Just someone in Essex with a website.';
             isBot = true;
-            document.documentElement.style.backgroundColor = 'pink';
         }
 
     } catch (error) {
@@ -28,7 +27,7 @@ const botCheckPromise = (async () => {
 function themedFavicon(isDark) {
 var favicons = document.querySelectorAll('.dynamic-favicon');
 favicons.forEach(favicon => {
-    if (isDark) {
+    if (isDark || isBot) {
         favicon.href = favicon.href.replace(/\/light\//, '/dark/');
     } else {
         favicon.href = favicon.href.replace(/\/dark\//, '/light/');
@@ -39,7 +38,7 @@ favicons.forEach(favicon => {
 // Set themed favicon on page load (after bot check completes)
 botCheckPromise.then(() => {
     const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-    if (isLightMode && !isBot) {
+    if (isLightMode) {
         themedFavicon(false);  // Use light mode
     } else {
         themedFavicon(true);   // Use dark mode
@@ -48,11 +47,7 @@ botCheckPromise.then(() => {
 
 // Set themed favicon on theme change
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-    if (!isBot) {
-        themedFavicon(!e.matches);
-    } else {
-        themedFavicon(true);
-    }
+    themedFavicon(!e.matches);
 });
 
 
