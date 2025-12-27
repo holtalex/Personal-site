@@ -15,6 +15,8 @@ favicons.forEach(favicon => {
 });
 }
 
+themedFavicon(false);
+
 // Check the user agent against ones used by crawlers/bots
 (async () => {
     try {
@@ -32,7 +34,7 @@ favicons.forEach(favicon => {
 
             // Set themed favicon on page load
             const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-            themedFavicon(false);
+            
             // if (isLightMode) {
             //     themedFavicon(false); // Use light mode
             // } else {
