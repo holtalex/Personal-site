@@ -1,4 +1,4 @@
-var isBot = false;
+var isBot = true;
 
 // Check the user agent against ones used by crawlers/bots
 (async () => {
@@ -13,6 +13,9 @@ var isBot = false;
         const userAgent = navigator.userAgent;
         if (re.test(userAgent)) {
             isBot = true;
+        } else {
+            document.title = 'Alex.';
+            isBot = false;
         }
 
     } catch (error) {
