@@ -1,4 +1,4 @@
-var isBot = true;
+var isBot = true; // Assume bot until proven otherwise
 
 // Check the user agent against ones used by crawlers/bots
 (async () => {
@@ -11,10 +11,7 @@ var isBot = true;
         const botPattern = "(" + data.patterns.join("|") + ")";
         const re = new RegExp(botPattern, 'i');
         const userAgent = navigator.userAgent;
-        if (re.test(userAgent)) {
-            document.title = 'Alex Holt: Just someone in Essex with a website.';
-            isBot = true;
-        } else {
+        if (!re.test(userAgent)) {
             document.title = 'Alex.';
             isBot = false;
         }

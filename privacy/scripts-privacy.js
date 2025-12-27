@@ -11,10 +11,7 @@ var isBot = true;
         const botPattern = "(" + data.patterns.join("|") + ")";
         const re = new RegExp(botPattern, 'i');
         const userAgent = navigator.userAgent;
-        if (re.test(userAgent)) {
-            isBot = true;
-        } else {
-            document.title = 'Alex.';
+        if (!re.test(userAgent)) {
             isBot = false;
         }
 
