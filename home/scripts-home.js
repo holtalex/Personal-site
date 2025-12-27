@@ -6,7 +6,7 @@
 // Check the user agent against ones used by crawlers/bots
 async function isCrawler() {
     try {
-        const response = await fetch('https://alexholt.uk/home/crawler-user-agents.json');
+        const response = await fetch('https://alexholt.uk/home/crawler-user-agents.json'); // CHANGE FILE PATH ONCE WORKING
         if (!response.ok) {
             throw new Error('Could not find crawler-user-agents.json');
         }
@@ -30,7 +30,7 @@ async function isCrawler() {
 }
 
 var isBot = isCrawler();
-isBot = false;
+isBot = false; // TEMPORARY - REMOVE THIS LINE
 
 console.log("isBot:", isBot);
 
