@@ -1,40 +1,56 @@
-// Change the title & favicon when not being indexed by Bing, Google, or other search engines
-var isBot = true; // Assume it is a bot, then check
+document.title = 'Alex.'; // Change the page title, but change it again if it is a bot - the check is a bit slow, so this prevents a delay
+var isBot = false;
 
-var botPattern = "(bingbot|adidxbot|bingpreview|microsoftpreview|bingvideopreview|googlebot|Googlebot-Mobile|Google-InspectionTool|GoogleOther|GoogleOther-Image|GoogleOther-Video|Googlebot-Discovery|Googlebot-Image|Googlebot-News|Googlebot-Video|Storebot-Google|Bravest|Applebot|Applebot-Extended|AspiegelBot|Baiduspider|DuckDuckBot|Mojeek|MojeekBot|PetalBot|SeznamHomepageCrawler|Slurp|Teoma|Yahoo-Blogs|Yahoo-FeedSeeker|Yahoo-MMCrawler|YahooSeeker|Yandex|YandexBot|YandexAdditional|YandexAdditionalBot|baidu)";
-var re = new RegExp(botPattern, 'i');
-var userAgent = navigator.userAgent; 
-if (!re.test(userAgent)) {
-    document.title = 'Alex.';
-    isBot = false;
-}
+// Check the user agent against ones used by crawlers/bots
+(async () => {
+    try {
+        const response = await fetch('/Personal-site/crawler-user-agents.json');
+        if (!response.ok) {
+            throw new Error('Could not find crawler-user-agents.json');
+        }
+        const data = await response.json();
+        const botPattern = "(" + data.patterns.join("|") + ")";
+        const re = new RegExp(botPattern, 'i');
+        const userAgent = navigator.userAgent;
+        if (re.test(userAgent)) {
+            document.title = 'Alex Holt: Just someone in Essex with a website.';
+            isBot = true;
+        }
 
-// Changes favicon based on system theme
-// May not work in Safari due to aggressive caching
+        // Changes favicon based on system theme
+        // May not work in Safari due to aggressive caching
 
-function themedFavicon(isDark) {
- var favicons = document.querySelectorAll('.dynamic-favicon');
- favicons.forEach(favicon => {
-     if (isDark || isBot) {
-         favicon.href = favicon.href.replace(/\/light\//, '/dark/');
-     } else {
-         favicon.href = favicon.href.replace(/\/dark\//, '/light/');
-     }
- });
-}
+        function themedFavicon(isDark) {
+        var favicons = document.querySelectorAll('.dynamic-favicon');
+        favicons.forEach(favicon => {
+            if (isDark) {
+                favicon.href = favicon.href.replace(/\/light\//, '/dark/');
+            } else {
+                favicon.href = favicon.href.replace(/\/dark\//, '/light/');
+            }
+        });
+        }
 
-// Set themed favicon on page load
-const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
-if (isLightMode) {
-    themedFavicon(false);  // Use light mode
-} else {
-    themedFavicon(true);   // Use dark mode
-}
+        // Set themed favicon on page load
+        const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (isLightMode && !isBot) {
+            themedFavicon(false);  // Use light mode
+        } else {
+            themedFavicon(true);   // Use dark mode
+        }
 
-// Set themed favicon on theme change
-window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
-    themedFavicon(!e.matches);
-});
+        // Set themed favicon on theme change
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
+            if (!isBot) {
+                themedFavicon(!e.matches);
+            } else return;
+        });
+
+    } catch (error) {
+        console.error('Failed to load bot patterns:', error);
+        // If we can't load the patterns, assume it's a bot (safer default)
+    }
+})();
 
 
 // Terminal navigation
