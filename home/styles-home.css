@@ -4,7 +4,9 @@
     padding: 0 2rem;
 }
 
+
 /* Hero Section */
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -95,7 +97,9 @@
     fill: var(--primary);
 }
 
-/* Section */
+
+/* Sections */
+
 .section {
     padding: 6rem 0;
     border-top: 1px solid var(--grey-secondary);
@@ -122,41 +126,9 @@
     font-weight: 400;
 }
 
-.year-nav-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.year-nav-container h3 {
-    font-weight: 400;
-}
-
-.year-nav-arrows {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-left: auto;
-}
-
-.year-nav {
-    font-size: 1.5rem;
-    color: var(--grey-quaternary);
-    cursor: pointer;
-    transition: color 0.3s ease;
-    user-select: none;
-}
-
-.year-nav:hover {
-    color: var(--primary);
-}
-
-.year-nav.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    pointer-events: none;
-}
 
 /* Game List */
+
 .game-list {
     display: flex;
     flex-direction: column;
@@ -220,7 +192,9 @@
     color: var(--primary);
 }
 
+
 /* Stats Grid */
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -257,7 +231,8 @@
 }
 
 
-/* Resolutions List */
+/* New Year's Resolutions */
+
 .resolutions-list {
     display: flex;
     flex-direction: column;
@@ -292,30 +267,43 @@
     justify-content: center;
 }
 
-.resolutions-stats {
-    padding-top: 4rem;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 0 2rem;
-    text-align: center;
+.resolutions-nav-container {
+    margin-top: 4rem;
 }
 
-.resolutions-stats-label {
+.year-nav-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.year-nav-container h3 {
+    font-weight: 400;
+}
+
+.year-nav-arrows {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-left: auto;
+}
+
+.year-nav {
+    font-size: 1.5rem;
     color: var(--grey-quaternary);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    user-select: none;
 }
 
-.resolutions-stats-value {
+.year-nav:hover {
     color: var(--primary);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .resolutions-stats {
-        grid-template-columns: 1fr;
-        gap: 1rem 0;
-    }
+.year-nav.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
 }
-
 
 /* Completed state */
 .resolution-item.completed .resolution-checkbox::after {
@@ -340,7 +328,9 @@
     font-size: 0.95rem;
 }
 
+
 /* Quote */
+
 .quote-section {
     padding: 8rem 0;
     text-align: center;
@@ -369,6 +359,7 @@
 
 
 /* Cursor effect */
+
 .cursor {
     display: inline-block;
     width: 0.08em;
@@ -379,7 +370,9 @@
     vertical-align: baseline;
 }
 
+
 /* Responsive */
+
 @media (max-width: 768px) {
     .container {
         padding: 0 1.5rem;

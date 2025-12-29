@@ -6,7 +6,7 @@ var userAgent = navigator.userAgent;
 if (!re.test(userAgent)) {
     document.title = 'Alex.';
     isBot = false;
-} 
+}
 
 // Changes favicon based on system theme
 // May not work in Safari due to aggressive caching
