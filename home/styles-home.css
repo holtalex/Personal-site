@@ -122,6 +122,10 @@
     font-weight: 400;
 }
 
+.resolutions-nav-container {
+    margin-top: 4rem;
+}
+
 .year-nav-container {
     display: flex;
     justify-content: space-between;
