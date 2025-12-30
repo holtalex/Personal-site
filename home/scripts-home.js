@@ -6,6 +6,8 @@ var userAgent = navigator.userAgent;
 if (!re.test(userAgent)) {
     document.title = 'Alex.';
     isBot = false;
+} else {
+    document.title = 'Alex Holt: Just someone in Essex with a website.'; // I know this is in the HTML already, but a certain search engine isn't happy
 }
 
 // Changes favicon based on system theme
