@@ -274,10 +274,12 @@
 .year-nav-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .year-nav-container h3 {
     font-weight: 400;
+    line-height: 1;
 }
 
 .year-nav-arrows {
