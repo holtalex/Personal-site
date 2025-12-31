@@ -15,13 +15,11 @@ if (!re.test(userAgent)) {
 function themedFavicon(isDark) {
 var favicons = document.querySelectorAll('.dynamic-favicon');
 favicons.forEach(favicon => {
-    let url = favicon.href.split('?')[0]; // Remove any existing query params
     if (isDark || isBot) {
-        url = url.replace(/\/light\//, '/dark/');
+        favicon.href = favicon.href.replace(/\/light\//, '/dark/');
     } else {
-        url = url.replace(/\/dark\//, '/light/');
+        favicon.href = favicon.href.replace(/\/dark\//, '/light/');
     }
-    favicon.href = url + '?v=' + Date.now(); // Add timestamp to bust cache
 });
 }
 
@@ -37,6 +35,27 @@ if (isLightMode) {
 window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', e => {
     themedFavicon(!e.matches);
 });
+
+
+// Random intro/about section
+const aboutMsg = [
+    "I'm Alex, but you probably already guessed that - what with it saying my name just above and all.",
+    "Yeah, I have a website. Nothing unusual about that. The real question is, why don't you?",
+    "Who are you? What are you doing here? Oh right, looking at the website. That's fine... I guess.",
+    "How did you know my name? What do you mean it says it right above this? Ah... nevermind.",
+    "I don't really know what <i>should</i> go here, but it's my website, and apparently I settled on this.",
+    "Welcome. Please read this informative text, it is vital. Yes, this was the best thing I could think of.",
+    "This website contains lots of exciting information. For example, err.. well... at least you're here.",
+    "I hope you like my website. What? You don't? Well I bet you don't have one, do you? That's what I thought.",
+    "Congratulations, you're reading this text. Based on that, I estimate that you are above the age of three.",
+];
+
+if (!isBot) {
+    const randomAboutMsg = aboutMsg[Math.floor(Math.random() * aboutMsg.length)];
+    document.getElementById('random-about-msg').innerHTML = randomAboutMsg;
+} else { // Set a more descriptive message for bots, to potentially aid in SEO
+    document.getElementById('random-about-msg').innerHTML = "I have a website (that's this), I like video games, and I live in Essex - I think that's about it.";
+}
 
 
 // Terminal navigation
