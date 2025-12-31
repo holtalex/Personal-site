@@ -102,6 +102,18 @@ async function updatePlayTime() {
 updatePlayTime(); // Call when page loads
 
 
+// Random strikethrough text for F1® game
+const strikedText = [
+    "prepare a doomsday bunker",
+    "save the galaxy",
+    "jump through portals",
+    "fight rogue robots",
+];
+
+const randomStrikedText = strikedText[Math.floor(Math.random() * strikedText.length)];
+document.getElementById('game-three-strike-text').innerHTML = randomStrikedText;
+
+
 // Year navigation for resolutions
 let currentYear = 2025;
 const years = [2025, 2026];
