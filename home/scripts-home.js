@@ -115,7 +115,7 @@ document.getElementById('game-three-strike-text').innerHTML = randomStrikedText;
 
 
 // Year navigation for resolutions
-let currentYear = 2025;
+let currentYear = 2026;
 const years = [2025, 2026];
 
 function updateResolutionYear() {
