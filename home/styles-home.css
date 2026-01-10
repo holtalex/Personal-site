@@ -155,8 +155,7 @@
 }
 
 .game-ascii {
-    font-size: 3rem;
-    line-height: 1;
+    height: 4rem;
     user-select: none;
 }
 
@@ -346,7 +345,8 @@
 }
 
 .quote::before {
-    content: '> ';
+    font-family: Consolas, monospace;
+    content: '“ ';
     color: var(--grey-quaternary);
     animation: blink 1s step-end infinite;
 }
