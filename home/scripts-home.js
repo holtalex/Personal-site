@@ -77,9 +77,9 @@ async function updatePlayTime() {
     
     // Map appids to their corresponding HTML element IDs
     const gamesToTrack = [
-      { appid: 1876590, elementId: 'playingGameOne' },   // I Am Your Beast
-      { appid: 268910, elementId: 'playingGameTwo' },    // Cuphead
-      { appid: 3059520, elementId: 'playingGameThree' }  // F1® 25
+      { appid: 3059520, elementId: 'playingGameOne' },   // F1® 25
+      { appid: 1808500, elementId: 'playingGameTwo' },    // Arc Raiders
+      { appid: 268910, elementId: 'playingGameThree' }  // Cuphead
     ];
     
     gamesToTrack.forEach(({ appid, elementId }) => {
@@ -109,7 +109,7 @@ const strikedText = [
 ];
 
 const randomStrikedText = strikedText[Math.floor(Math.random() * strikedText.length)];
-document.getElementById('game-three-strike-text').innerHTML = randomStrikedText;
+document.getElementById('game-one-strike-text').innerHTML = randomStrikedText;
 
 
 // Year navigation for resolutions
