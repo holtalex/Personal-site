@@ -16,7 +16,7 @@
     <link rel="manifest" href="favicons/dark/site.webmanifest" class="dynamic-favicon">
 
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="home/styles-home.css?v=7">
+    <link rel="stylesheet" href="home/styles-home.css?v=10">
     <title id="dynamic-title">Alex Holt: Just someone in Essex with a website.</title>
 </head>
 <body>
@@ -28,7 +28,7 @@
                 I have a website (that's this), I like video games, and I live in Essex - I think that's about it.
             </p>
             <div class="terminal">
-                <div class="terminal-line" data-scroll-to="currently-playing"><span class="prompt">></span> currently_playing</div>
+                <div class="terminal-line" data-scroll-to="entertainment"><span class="prompt">></span> my_entertainment</div>
                 <div class="terminal-line" data-scroll-to="resolutions"><span class="prompt">></span> new_years_resolutions</div>
                 <div class="terminal-line" data-scroll-to="stats"><span class="prompt">></span> statistics</div>
             </div>
@@ -43,77 +43,101 @@
         </div>
     </section>
 
-    <!-- Currently Playing -->
-    <section class="section" id="currently-playing">
+    <!-- Current Focus -->
+     <section class="section" id="entertainment">
         <div class="container">
             <div class="section-header">
                 <span class="section-number">[01]</span>
-                <h2 class="section-title">Currently Playing<span class="cursor"></span></h2>
+                <h2 class="section-title">My Entertainment<span class="cursor"></span></h2>
             </div>
-            <div class="game-list">
-                <a href="https://store.steampowered.com/app/3059520/F1_25/" target="_blank">
-                    <div class="game-item">
-                        <img src="icons/race_car.png" alt="" class="game-ascii">    <!-- Lovely icons from https://thiings.co, go take a look if you like them! -->
-                        <div class="game-content">
-                            <h3>F1® 25</h3>
-                            <p>Even if you've never heard of the game, I'm pretty sure you could figure out the general idea: you <s id="game-one-strike-text">prepare a doomsday bunker</s> race in F1.</p>
-                            <div class="game-meta">
-                                <div class="meta-item">
-                                    <span class="meta-label">PLATFORM:</span>
-                                    <span class="meta-value">PC</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">HOURS PLAYED:</span>
-                                    <span class="meta-value" id="playingGameOne">00.0</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-                <a href="https://store.steampowered.com/app/1808500/ARC_Raiders/" target="_blank">
-                    <div class="game-item">
-                        <img src="icons/drone.png" alt="" class="game-ascii">  <!-- Lovely icons from https://thiings.co, go take a look if you like them! -->
-                        <div class="game-content">
-                            <h3>Arc Raiders</h3>
-                            <p>Set in a future where the world has been taken over by deadly robots, all you have to do is survive. Simple, right?</p>
-                            <div class="game-meta">
-                                <div class="meta-item">
-                                    <span class="meta-label">PLATFORM:</span>
-                                    <span class="meta-value">PC</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">HOURS PLAYED:</span>
-                                    <span class="meta-value" id="playingGameTwo">00.0</span>
+
+            <div class="currently-reading">
+                <h3 class="subsection-header">READING</h3>
+                <div class="book-card-outer">
+                    <a href="https://www.google.co.uk/books/edition/The_President_s_Daughter/UHbnDwAAQBAJ" target="_blank">
+                        <div class="book-card-inner">
+                            <img src="icons/white_house.png" alt="" class="book-icon">
+                            <div class="book-content">
+                                <h3>The President's Daughter</h3>
+                                <div class="book-meta-items">
+                                    <div class="meta-item">
+                                        <span class="meta-label">AUTHOR: </span>
+                                        <span class="meta-value">Bill Clinton & James Patterson</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">GENRE: </span>
+                                        <span class="meta-value">Thriller</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-                
-                <a href="https://store.steampowered.com/app/268910/Cuphead/" target="_blank">
-                    <div class="game-item">
-                        <img src="icons/coffee_cup.png" alt="" class="game-ascii">  <!-- Lovely icons from https://thiings.co, go take a look if you like them! -->
-                        <div class="game-content">
-                            <h3>Cuphead</h3>
-                            <p>A game known for both it's iconic style, and it's... <i>challenging</i> difficulty. They've managed to make a game that's simultaneously infuriating and addictive.</p>
-                            <div class="game-meta">
-                                <div class="meta-item">
-                                    <span class="meta-label">PLATFORM:</span>
-                                    <span class="meta-value">Steam Deck</span>
-                                </div>
-                                <div class="meta-item">
-                                    <span class="meta-label">HOURS PLAYED:</span>
-                                    <span class="meta-value" id="playingGameThree">00.0</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="currently-playing">
+                <h3 class="subsection-header playing-subsection-header">PLAYING</h3>
+                <div class="games-grid">
+                    <div class="game-card-outer">
+                        <a href="https://store.steampowered.com/app/3059520/F1_25/" target="_blank">
+                            <div class="game-card-inner">
+                                <img src="icons/race_car.png" alt="" class="game-icon">
+                                <h3>F1® 25</h3>
+                                <div class="game-meta-items">
+                                    <div class="meta-item">
+                                        <span class="meta-label">PLATFORM: </span>
+                                        <span class="meta-value">PC</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">HOURS PLAYED: </span>
+                                        <span class="meta-value" id="playingGameOne">00.00</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
-                </a>
-                
+
+                  <div class="game-card-outer">
+                        <a href="https://store.steampowered.com/app/1808500/ARC_Raiders/" target="_blank">
+                            <div class="game-card-inner">
+                                <img src="icons/drone.png" alt="" class="game-icon">
+                                <h3>Arc Raiders</h3>
+                                <div class="game-meta-items">
+                                    <div class="meta-item">
+                                        <span class="meta-label">PLATFORM: </span>
+                                        <span class="meta-value">PC</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">HOURS PLAYED: </span>
+                                        <span class="meta-value" id="playingGameTwo">00.0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                  <div class="game-card-outer">
+                        <a href="https://store.steampowered.com/app/268910/Cuphead/" target="_blank">
+                            <div class="game-card-inner">
+                                <img src="icons/coffee_cup.png" alt="" class="game-icon">
+                                <h3>Cuphead</h3>
+                                <div class="game-meta-items">
+                                    <div class="meta-item">
+                                        <span class="meta-label">PLATFORM: </span>
+                                        <span class="meta-value">Steam Deck</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <span class="meta-label">HOURS PLAYED: </span>
+                                        <span class="meta-value" id="playingGameThree">00.0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+     </section>
 
     <!-- New Year's Resolutions -->
     <section class="section" id="resolutions">
@@ -234,6 +258,6 @@
     </footer>
 
     <script src="scripts.js"></script>
-    <script src="home/scripts-home.js?v=3"></script>
+    <script src="home/scripts-home.js?v=4"></script>
 </body>
 </html>
