@@ -222,8 +222,15 @@
     display: block;
 }
 
+.game-card-outer {
+    border-right: 1px solid var(--grey-secondary);
+}
+
+.game-card-outer:last-child {
+    border-right: none;
+}
+
 .game-card-inner {
-    border: 1px solid var(--grey-secondary);
     padding: 1.5rem;
     transition: all 0.3s ease;
     display: flex;
@@ -273,10 +280,20 @@
     gap: 0.5rem;
     font-size: 0.8rem;
     margin-top: auto;
-}
+    }
 
     .games-grid {
         grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .playing-subsection-header {
+        margin-bottom: 0;
+    }
+
+    .game-card-outer {
+        border-right: none;
+        border-bottom: 1px solid var(--grey-secondary);
     }
 }
 
