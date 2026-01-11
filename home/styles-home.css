@@ -300,12 +300,16 @@
     }
 
     .playing-subsection-header {
-        margin-bottom: 0;
+        margin-bottom: 0.5rem;
     }
 
     .game-card-outer {
         border-right: none;
         border-bottom: 1px solid var(--grey-primary);
+    }
+
+    .game-card-inner {
+        padding-bottom: 2rem;
     }
 
     .game-card-inner:hover {
