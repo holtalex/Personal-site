@@ -223,7 +223,7 @@
 }
 
 .game-card-outer {
-    border-right: 1px solid var(--grey-secondary);
+    border-right: 1px solid var(--grey-primary);
 }
 
 .game-card-outer:last-child {
@@ -293,7 +293,7 @@
 
     .game-card-outer {
         border-right: none;
-        border-bottom: 1px solid var(--grey-secondary);
+        border-bottom: 1px solid var(--grey-primary);
     }
 }
 
