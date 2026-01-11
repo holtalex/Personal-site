@@ -189,6 +189,7 @@
 
 .book-icon {
     height: 4rem;
+    width: 4rem;
     user-select: none;
     display: flex;
     align-items: center;
@@ -274,16 +275,23 @@
         gap: 1rem;
     }
 
+    .book-card-inner {
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+        margin-left: 1.5rem;
+    }
+
     .book-card-inner:hover {
         padding-left: 0;
     }
 
     .book-meta-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        margin-top: auto;
     }
 
     .games-grid {
