@@ -209,10 +209,11 @@
 .stat-box {
     border: 1px solid var(--grey-secondary);
     padding: 2rem;
-    transition: border-color 0.3s ease;
+    transition: 0.3s ease;
 }
 
 .stat-box:hover {
+    transform: translateY(-0.5rem);
     border-color: var(--primary);
 }
 
