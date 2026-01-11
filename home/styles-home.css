@@ -274,6 +274,10 @@
         gap: 1rem;
     }
 
+    .book-card-inner:hover {
+        padding-left: 0;
+    }
+
     .book-meta-items {
     display: flex;
     flex-direction: column;
@@ -294,6 +298,10 @@
     .game-card-outer {
         border-right: none;
         border-bottom: 1px solid var(--grey-primary);
+    }
+
+    .game-card-inner:hover {
+        transform: none;
     }
 }
 
@@ -496,12 +504,11 @@
         flex-wrap: nowrap;
     }
 
-    .game-item {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-
     .scroll-hint {
         left: 1.5rem;
+    }
+
+    .stat-box:hover {
+        transform: none;
     }
 }
