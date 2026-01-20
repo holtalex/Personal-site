@@ -68,6 +68,17 @@ document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
 });
 
 
+// Store today's date - this will be used later on in the stats section too
+const today = new Date();
+
+
+// Calculate how long reading book
+const bookStartDate = new Date('2026-01-20');
+let bookReadingDays = (today - bookStartDate) / (1000 * 60 * 60 * 24);
+const roundedReadingDays = Math.round(bookReadingDays);
+document.getElementById('days-reading').textContent = roundedReadingDays;
+
+
 // Get number of hours played per now playing game
 
 async function updatePlayTime() {
@@ -151,7 +162,6 @@ document.getElementById('next-year').addEventListener('click', () => {
 updateResolutionYear();
 
 
-const today = new Date(); // Stores today's date
 
 // Calculate Duolingo streak
 const duolingoStreakStart = new Date('2025-07-03');
