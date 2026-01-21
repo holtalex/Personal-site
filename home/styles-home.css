@@ -417,7 +417,7 @@
     height: 100%;
     width: 0%;
     background: var(--grey-quinary);
-    transition: width 0.3s ease;
+    /* transition: width 0.3s ease; */
 }
 
 .progress-stats {
