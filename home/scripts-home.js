@@ -68,6 +68,8 @@ document.querySelectorAll('.terminal-line[data-scroll-to]').forEach(line => {
 });
 
 
+// My Entertainment Section
+
 // Store today's date - this will be used later on in the stats section too
 const today = new Date();
 
@@ -111,57 +113,7 @@ async function updatePlayTime() {
 updatePlayTime(); // Call when page loads
 
 
-// Year navigation for resolutions
-let currentYear = 2026;
-const years = [2025, 2026];
-
-function updateResolutionYear() {
-    // Update year display
-    document.getElementById('current-year').textContent = currentYear;
-    
-    // Show/hide resolution lists
-    years.forEach(year => {
-        const list = document.getElementById(`resolutions-${year}`);
-        if (list) {
-            list.style.display = year === currentYear ? 'flex' : 'none';
-        }
-    });
-    
-    // Enable/disable navigation arrows
-    const prevBtn = document.getElementById('prev-year');
-    const nextBtn = document.getElementById('next-year');
-    
-    if (currentYear <= Math.min(...years)) {
-        prevBtn.classList.add('disabled');
-    } else {
-        prevBtn.classList.remove('disabled');
-    }
-    
-    if (currentYear >= Math.max(...years)) {
-        nextBtn.classList.add('disabled');
-    } else {
-        nextBtn.classList.remove('disabled');
-    }
-}
-
-document.getElementById('prev-year').addEventListener('click', () => {
-    if (currentYear > Math.min(...years)) {
-        currentYear--;
-        updateResolutionYear();
-    }
-});
-
-document.getElementById('next-year').addEventListener('click', () => {
-    if (currentYear < Math.max(...years)) {
-        currentYear++;
-        updateResolutionYear();
-    }
-});
-
-// Initialize
-updateResolutionYear();
-
-
+// Side Quests Section
 
 // DUOLINGO QUEST
 
@@ -170,7 +122,8 @@ const duolingoStreakStart = new Date('2025-07-03');
 let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
 duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
 const roundedStreakDays = Math.round(duolingoStreakDays);
-document.getElementById('duolingo-streak').textContent = roundedStreakDays;
+
+document.getElementById('duolingo-streak').textContent = roundedStreakDays;     // Also set the Duolingo stat while we're here
 
 // Calculate progress
 const duolingoTarget = 365;
@@ -185,12 +138,11 @@ duolingoBar.style.width = duolingoPercentage + '%';
 duolingoNumbers.textContent = `${roundedStreakDays} / ${duolingoTarget} days`;
 duolingoPercent.textContent = duolingoPercentage + '%';
 
-
 // BOOKS QUEST
 
 // Calculate progress
 const booksTarget = 5;
-const booksRead = 1;
+const booksRead = 1;   // <---------- Update number of books read here
 const booksPercentage = Math.min(Math.round((booksRead / booksTarget) * 100), 100);
 
 // Update the progress bar
@@ -201,6 +153,9 @@ const booksPercent = document.getElementById('books-percent');
 booksBar.style.width = booksPercentage + '%';
 booksNumbers.textContent = `${booksRead} / ${booksTarget} books`;
 booksPercent.textContent = booksPercentage + '%';
+
+
+// Stats Section
 
 // Get number of hours gaming on Steam
 
@@ -237,6 +192,8 @@ updateSteamStats(); // Call when page loads
 updateGitHubStats();
 
 
+// Quote
+
 // Random video game quote rotation
 const quotes = [
     "The cake is a lie.",
@@ -251,6 +208,9 @@ const quotes = [
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 document.getElementById('random-quote').textContent = randomQuote;
+
+
+// Misc
 
 // Remove scroll hint after first scroll
 let scrollHint = document.querySelector('.scroll-hint');

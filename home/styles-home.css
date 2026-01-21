@@ -356,7 +356,7 @@
 }
 
 
-/* Quests */
+/* Side Quests */
 
 .quests-list {
     display: flex;
@@ -369,10 +369,6 @@
     border-bottom: 1px solid var(--grey-primary);
     transition: all 0.3s ease;
 }
-
-/* .quest-item:hover {
-    padding-left: 1rem; NOT YET ADDED
-} */
 
 .quest-item:last-child {
     border-bottom: none;
@@ -417,7 +413,6 @@
     height: 100%;
     width: 0%;
     background: var(--grey-quinary);
-    /* transition: width 0.3s ease; */
 }
 
 .progress-stats {
@@ -432,113 +427,13 @@
 }
 
 .progress-percentage {
-    color: var(--primary);
+    color: var(--grey-quaternary);
 }
 
 @media (max-width: 768px) {
     .quest-progress-line {
         gap: 0.75rem;
     }
-}
-
-
-/* New Year's Resolutions */
-
-.resolutions-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.resolution-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 0 2rem 0;
-    border-bottom: 1px solid var(--grey-primary);
-}
-
-.resolution-checkbox {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--grey-tertiary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.resolution-checkbox::after {
-    content: '';
-    opacity: 0;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.resolutions-nav-container {
-    margin-top: 4rem;
-}
-
-.year-nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.year-nav-container h3 {
-    font-weight: 400;
-    line-height: 1;
-}
-
-.year-nav-arrows {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-left: auto;
-}
-
-.year-nav {
-    font-size: 1.5rem;
-    color: var(--grey-quaternary);
-    cursor: pointer;
-    transition: color 0.3s ease;
-    user-select: none;
-}
-
-.year-nav:hover {
-    color: var(--primary);
-}
-
-.year-nav.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-/* Completed state */
-.resolution-item.completed .resolution-checkbox::after {
-    content: '✓';
-    opacity: 1;
-    color: var(--primary);
-}
-
-/* Failed state */
-.resolution-item.failed .resolution-checkbox::after {
-    content: '✗';
-    opacity: 1;
-    color: var(--primary);
-}
-
-.resolution-item.failed .resolution-text {
-    color: var(--grey-quaternary);
-}
-
-.resolution-text {
-    flex: 1;
-    font-size: 0.95rem;
 }
 
 
