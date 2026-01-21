@@ -163,12 +163,44 @@ updateResolutionYear();
 
 
 
+// DUOLINGO QUEST
+
 // Calculate Duolingo streak
 const duolingoStreakStart = new Date('2025-07-03');
 let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
 duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
 const roundedStreakDays = Math.round(duolingoStreakDays);
 document.getElementById('duolingo-streak').textContent = roundedStreakDays;
+
+// Calculate progress
+const duolingoTarget = 365;
+const duolingoPercentage = Math.min(Math.round((roundedStreakDays / duolingoTarget) * 100), 100);
+
+// Update the progress bar
+const duolingoBar = document.getElementById('duolingo-progress-bar');
+const duolingoNumbers = document.getElementById('duolingo-numbers');
+const duolingoPercent = document.getElementById('duolingo-percent');
+
+duolingoBar.style.width = duolingoPercentage + '%';
+duolingoNumbers.textContent = `${roundedStreakDays} / ${duolingoTarget} days`;
+duolingoPercent.textContent = duolingoPercentage + '%';
+
+
+// BOOKS QUEST
+
+// Calculate progress
+const booksTarget = 5;
+const booksRead = 1;
+const booksPercentage = Math.min(Math.round((booksRead / booksTarget) * 100), 100);
+
+// Update the progress bar
+const booksBar = document.getElementById('books-progress-bar');
+const booksNumbers = document.getElementById('books-numbers');
+const booksPercent = document.getElementById('books-percent');
+
+booksBar.style.width = booksPercentage + '%';
+booksNumbers.textContent = `${booksRead} / ${booksTarget} books`;
+booksPercent.textContent = booksPercentage + '%';
 
 // Get number of hours gaming on Steam
 
