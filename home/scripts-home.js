@@ -115,6 +115,40 @@ updatePlayTime(); // Call when page loads
 
 // Side Quests Section
 
+// Round the percentage to fit neatly into chunks, instead of spilling over
+function roundToChunk(percentage, chunkSize) {
+  return Math.min(Math.round(percentage / chunkSize) * chunkSize, 100);
+}
+
+// Determine number of chunks based on screen size
+function getChunkCount() {
+  return window.innerWidth <= 768 ? 10 : 20;
+}
+
+// Update the progress bars for each quest
+function updateQuestProgress(segmentsId, numbersId, percentId, current, target, unit) {
+  
+  const segmentCount = getChunkCount();
+  const chunkSize = 100 / segmentCount;
+
+  const percentage = (current / target) * 100;
+  const roundedPercentage = Math.round(percentage);
+  const chunkedPercentage = roundToChunk(percentage, chunkSize);
+  const filledSegments = Math.floor(chunkedPercentage / chunkSize);
+            
+  // Update segments
+  const segmentsContainer = document.getElementById(segmentsId);
+  let segmentsHTML = '';
+  for (let i = 0; i < segmentCount; i++) {
+    segmentsHTML += `<div class="segment ${i < filledSegments ? 'filled' : ''}"></div>`;
+  }
+  segmentsContainer.innerHTML = segmentsHTML;
+            
+  // Update text
+  document.getElementById(numbersId).textContent = `${current} / ${target} ${unit}`;
+  document.getElementById(percentId).textContent = roundedPercentage + '%';
+}
+
 // DUOLINGO QUEST
 
 // Calculate Duolingo streak
@@ -123,36 +157,16 @@ let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
 duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
 const roundedStreakDays = Math.round(duolingoStreakDays);
 
-document.getElementById('duolingo-streak').textContent = roundedStreakDays;     // Also set the Duolingo stat while we're here
+document.getElementById('duolingo-streak').textContent = roundedStreakDays;  // Also set the Duolingo stat while we're here
 
-// Calculate progress
-const duolingoTarget = 365;
-const duolingoPercentage = Math.min(Math.round((roundedStreakDays / duolingoTarget) * 100), 100);
+function updateAllQuests() {
+  updateQuestProgress('duolingo-segments', 'duolingo-numbers', 'duolingo-percent', roundedStreakDays, 365, 'days');
+  updateQuestProgress('books-segments', 'books-numbers', 'books-percent', 1, 5, 'books');      // <---------- UPDATE NUMBER OF BOOKS READ HERE
+  updateQuestProgress('houses-segments', 'houses-numbers', 'houses-percent', 0, 1, 'houses');
+}
 
-// Update the progress bar
-const duolingoBar = document.getElementById('duolingo-progress-bar');
-const duolingoNumbers = document.getElementById('duolingo-numbers');
-const duolingoPercent = document.getElementById('duolingo-percent');
-
-duolingoBar.style.width = duolingoPercentage + '%';
-duolingoNumbers.textContent = `${roundedStreakDays} / ${duolingoTarget} days`;
-duolingoPercent.textContent = duolingoPercentage + '%';
-
-// BOOKS QUEST
-
-// Calculate progress
-const booksTarget = 5;
-const booksRead = 1;   // <---------- Update number of books read here
-const booksPercentage = Math.min(Math.round((booksRead / booksTarget) * 100), 100);
-
-// Update the progress bar
-const booksBar = document.getElementById('books-progress-bar');
-const booksNumbers = document.getElementById('books-numbers');
-const booksPercent = document.getElementById('books-percent');
-
-booksBar.style.width = booksPercentage + '%';
-booksNumbers.textContent = `${booksRead} / ${booksTarget} books`;
-booksPercent.textContent = booksPercentage + '%';
+updateAllQuests();  // Update on page load
+window.addEventListener('resize', updateAllQuests);   // Update if screen is resized
 
 
 // Stats Section
