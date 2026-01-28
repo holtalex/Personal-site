@@ -356,103 +356,99 @@
 }
 
 
-/* New Year's Resolutions */
+/* Side Quests */
 
-.resolutions-list {
+.quests-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: 2rem;
 }
 
-.resolution-item {
+.quest-item {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--grey-primary);
+    transition: all 0.3s ease;
+}
+
+.quest-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.quest-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+}
+
+.quest-progress-line {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1rem 0 2rem 0;
-    border-bottom: 1px solid var(--grey-primary);
 }
 
-.resolution-checkbox {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--grey-tertiary);
+.progress-wrapper {
+    flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
-.resolution-checkbox::after {
-    content: '';
-    opacity: 0;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.progress-segments {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 0.2rem;
+    height: 1.25rem;
 }
 
-.resolutions-nav-container {
-    margin-top: 4rem;
+.segment {
+    flex: 1;
+    background: var(--grey-primary);
+    border: 1px solid var(--grey-secondary);
+    transition: background-color 0.3s ease;
 }
 
-.year-nav-container {
+.segment.filled {
+    background: var(--grey-quaternary);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 1.25rem;
+    background: var(--grey-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--grey-quinary);
+}
+
+.progress-stats {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 0.85rem;
 }
 
-.year-nav-container h3 {
-    font-weight: 400;
-    line-height: 1;
-}
-
-.year-nav-arrows {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-left: auto;
-}
-
-.year-nav {
-    font-size: 1.5rem;
-    color: var(--grey-quaternary);
-    cursor: pointer;
-    transition: color 0.3s ease;
-    user-select: none;
-}
-
-.year-nav:hover {
-    color: var(--primary);
-}
-
-.year-nav.disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-/* Completed state */
-.resolution-item.completed .resolution-checkbox::after {
-    content: '✓';
-    opacity: 1;
-    color: var(--primary);
-}
-
-/* Failed state */
-.resolution-item.failed .resolution-checkbox::after {
-    content: '✗';
-    opacity: 1;
-    color: var(--primary);
-}
-
-.resolution-item.failed .resolution-text {
+.progress-numbers {
     color: var(--grey-quaternary);
 }
 
-.resolution-text {
-    flex: 1;
-    font-size: 0.95rem;
+.progress-percentage {
+    color: var(--grey-quaternary);
+}
+
+@media (max-width: 768px) {
+    .quest-progress-line {
+        gap: 0.75rem;
+    }
+
+    .progress-segments {
+        grid-template-columns: repeat(10, 1fr);
+    }
 }
 
 
