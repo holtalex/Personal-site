@@ -157,6 +157,7 @@ let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
 duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
 const roundedStreakDays = Math.round(duolingoStreakDays);
 
+// Update all quests
 function updateAllQuests() {
   updateQuestProgress('duolingo-segments', 'duolingo-numbers', 'duolingo-percent', roundedStreakDays, 365, 'days');
   updateQuestProgress('books-segments', 'books-numbers', 'books-percent', 1, 5, 'books');      // <---------- UPDATE NUMBER OF BOOKS READ HERE
