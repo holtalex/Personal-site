@@ -157,8 +157,6 @@ let duolingoStreakDays = (today - duolingoStreakStart) / (1000 * 60 * 60 * 24);
 duolingoStreakDays  = duolingoStreakDays - 11; // Adjust for missed days
 const roundedStreakDays = Math.round(duolingoStreakDays);
 
-// document.getElementById('duolingo-streak').textContent = roundedStreakDays;  // Also set the Duolingo stat while we're here
-
 function updateAllQuests() {
   updateQuestProgress('duolingo-segments', 'duolingo-numbers', 'duolingo-percent', roundedStreakDays, 365, 'days');
   updateQuestProgress('books-segments', 'books-numbers', 'books-percent', 1, 5, 'books');      // <---------- UPDATE NUMBER OF BOOKS READ HERE
@@ -169,23 +167,7 @@ updateAllQuests();  // Update on page load
 window.addEventListener('resize', updateAllQuests);   // Update if screen is resized
 
 
-// Stats Section
-
-// Get number of hours gaming on Steam
-
-async function updateSteamStats() {
-  try {
-    const steamResponse = await fetch('/api/steam-stats');
-    const steamData = await steamResponse.json();
-    
-    document.getElementById('hours-gaming').textContent = 
-      steamData.hours.toLocaleString();
-  } catch (error) {
-    console.error('Failed to load Steam stats:', error);
-    document.getElementById('hours-gaming').textContent = '--';
-  }
-}
-
+// Current Project Section
 
 // Get number of lines in this repo
 
@@ -194,16 +176,14 @@ async function updateGitHubStats() {
     const githubResponse = await fetch('/api/github-stats');
     const githubData = await githubResponse.json();
     
-    document.getElementById('lines-code').textContent = 
+    document.getElementById('github-code-lines').textContent = 
       githubData.lines.toLocaleString();
   } catch (error) {
     console.error('Failed to load GitHub stats:', error);
-    document.getElementById('lines-code').textContent = '--';
+    document.getElementById('github-code-lines').textContent = '--';
   }
 }
-
-updateSteamStats(); // Call when page loads
-updateGitHubStats();
+updateGitHubStats(); // Call when page loads
 
 
 // Quote

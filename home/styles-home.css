@@ -317,44 +317,6 @@
     }
 }
 
-/* Stats Grid */
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.stats-grid a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.stat-box {
-    border: 1px solid var(--grey-secondary);
-    padding: 2rem;
-    transition: 0.3s ease;
-}
-
-.stat-box:hover {
-    transform: translateY(-0.5rem);
-    border-color: var(--primary);
-}
-
-.stat-label {
-    font-size: 0.85rem;
-    color: var(--grey-quaternary);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-.stat-value {
-    font-size: 2.5rem;
-    font-weight: 400;
-}
-
 
 /* Side Quests */
 
