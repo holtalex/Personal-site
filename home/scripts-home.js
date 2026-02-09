@@ -91,7 +91,7 @@ async function updatePlayTime() {
     // Map appids to their corresponding HTML element IDs
     const gamesToTrack = [
       { appid: 3059520, elementId: 'playingGameOne' },   // F1® 25
-      { appid: 1808500, elementId: 'playingGameTwo' },    // Arc Raiders
+      { appid: 1144200, elementId: 'playingGameTwo' },    // Ready or Not
       { appid: 268910, elementId: 'playingGameThree' }  // Cuphead
     ];
     
